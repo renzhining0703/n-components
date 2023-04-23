@@ -32,7 +32,7 @@ const components = [
 ];
 
 const install = (app: App) => {
-  registerIcons(app);
+  app.use(registerIcons);
   components.map((item) => {
     app.use(item);
   });
