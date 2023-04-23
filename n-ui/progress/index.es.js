@@ -1,4 +1,4 @@
-import { defineComponent, ref, onMounted, resolveComponent, openBlock, createBlock, mergeProps, unref } from "vue";
+import { defineComponent, ref, watch, onMounted, resolveComponent, openBlock, createBlock, mergeProps, unref } from "vue";
 const _sfc_main = /* @__PURE__ */ defineComponent({
   props: {
     percentage: {
@@ -11,14 +11,14 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     },
     time: {
       type: Number,
-      default: 3e3
+      default: 500
     }
   },
   setup(__props) {
     const props = __props;
     ref(0);
     let p = ref(0);
-    onMounted(() => {
+    watch(() => props.percentage, (val) => {
       if (props.isAnimate) {
         let t = Math.ceil(props.time / props.percentage);
         let timer = setInterval(() => {
@@ -28,7 +28,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             clearInterval(timer);
           }
         }, t);
+        return;
       }
+      p.value = props.percentage;
+    }, { immediate: true });
+    onMounted(() => {
     });
     return (_ctx, _cache) => {
       const _component_el_progress = resolveComponent("el-progress");

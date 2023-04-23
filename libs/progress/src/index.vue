@@ -3,7 +3,7 @@
 </template>
 
 <script lang='ts' setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 // 标识动画加载过程中改变的值
 let num = ref<number>(0)
@@ -22,13 +22,13 @@ let props = defineProps({
   // 动画时长(毫秒)
   time: {
     type: Number,
-    default: 3000
+    default: 500
   },
 })
 
 let p = ref(0)
 
-onMounted(() => {
+watch(() => props.percentage, (val) => {
   if (props.isAnimate) {
     // 规定时间内加载完成
     let t = Math.ceil(props.time / props.percentage)
@@ -39,9 +39,27 @@ onMounted(() => {
         clearInterval(timer)
       }
     }, t)
+    return
   }
+  p.value = props.percentage
+
+},
+  { immediate: true }
+)
+
+onMounted(() => {
+  // if (props.isAnimate) {
+  //   // 规定时间内加载完成
+  //   let t = Math.ceil(props.time / props.percentage)
+  //   let timer = setInterval(() => {
+  //     p.value += 1
+  //     if (p.value >= props.percentage) {
+  //       p.value = props.percentage
+  //       clearInterval(timer)
+  //     }
+  //   }, t)
+  // }
 })
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang='scss' scoped></style>

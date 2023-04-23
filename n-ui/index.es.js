@@ -21948,14 +21948,14 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
     },
     time: {
       type: Number,
-      default: 3e3
+      default: 500
     }
   },
   setup(__props) {
     const props = __props;
     ref(0);
     let p = ref(0);
-    onMounted(() => {
+    watch(() => props.percentage, (val) => {
       if (props.isAnimate) {
         let t = Math.ceil(props.time / props.percentage);
         let timer = setInterval(() => {
@@ -21965,7 +21965,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
             clearInterval(timer);
           }
         }, t);
+        return;
       }
+      p.value = props.percentage;
+    }, { immediate: true });
+    onMounted(() => {
     });
     return (_ctx, _cache) => {
       const _component_el_progress = resolveComponent("el-progress");
