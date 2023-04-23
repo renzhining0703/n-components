@@ -1,23 +1,11 @@
 <template>
-  <el-table
-    :data="tableData"
-    v-loading="isLoading"
-    :element-loading-text="elementLoadingText"
-    :element-loading-spinner="elementLoadingSpinner"
-    :element-loading-background="elementLoadingBackground"
-    :element-loading-svg="elementLoadingSvg"
-    :element-loading-svg-view-box="elementLoadingSvgViewBox"
-    @row-click="rowClick"
-    v-bind="$attrs"
-  >
+  <el-table :data="tableData" v-loading="isLoading" :element-loading-text="elementLoadingText"
+    :element-loading-spinner="elementLoadingSpinner" :element-loading-background="elementLoadingBackground"
+    :element-loading-svg="elementLoadingSvg" :element-loading-svg-view-box="elementLoadingSvgViewBox"
+    @row-click="rowClick" v-bind="$attrs">
     <template v-for="(item, index) in tableOption" :key="index">
-      <el-table-column
-        v-if="item.prop && !item.action"
-        :label="item.label"
-        :prop="item.prop"
-        :width="item.width"
-        :align="item.align"
-      >
+      <el-table-column v-if="item.prop && !item.action" :label="item.label" :prop="item.prop" :width="item.width"
+        :align="item.align">
         <template #default="scope">
           <template v-if="scope.row.rowEdit">
             <el-input size="small" v-model="scope.row[item.prop]"></el-input>
@@ -38,22 +26,14 @@
             <template v-else>
               <slot v-if="item.slot" :name="item.slot" :scope="scope"></slot>
               <span v-else>{{ scope.row[item.prop] }}</span>
-              <component
-                :is="`el-icon-${toLine(editIcon)}`"
-                class="edit"
-                v-if="item.editable"
-                @click.stop="clickEditIcon(scope)"
-              ></component>
+              <component :is="`el-icon-${toLine(editIcon)}`" class="edit" v-if="item.editable"
+                @click.stop="clickEditIcon(scope)"></component>
             </template>
           </template>
         </template>
       </el-table-column>
     </template>
-    <el-table-column
-      :label="actionOption.label"
-      :width="actionOption.width"
-      :align="actionOption.align"
-    >
+    <el-table-column :label="actionOption.label" :width="actionOption.width" :align="actionOption.align">
       <template #default="scope">
         <slot name="editRow" :scope="scope" v-if="scope.row.rowEdit"></slot>
         <slot name="action" :scope="scope" v-else></slot>
@@ -62,19 +42,13 @@
   </el-table>
 
   <div v-if="pagination && !isLoading" class="pagination" :style="{ justifyContent }">
-    <el-pagination
-      v-model:currentPage="currentPage"
-      :page-sizes="pageSizes"
-      :page-size="pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    ></el-pagination>
+    <el-pagination v-model:currentPage="currentPage" :page-sizes="pageSizes" :page-size="pageSize"
+      layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"></el-pagination>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="js" setup>
 import { PropType, computed, ref, watch, onMounted } from 'vue'
 import { TableOptions } from './types'
 import { toLine } from '../../../utils'
@@ -178,14 +152,14 @@ let handleCurrentChange = (val: number) => {
 }
 
 // 当前被点击的单元格的标识
-let currentEdit = ref<string>('')
+let currentEdit = ref < string > ('')
 
 // 拷贝一份表格的数据
-let tableData = ref<any[]>(cloneDeep(props.data))
+let tableData = ref < any[] > (cloneDeep(props.data))
 // 拷贝一份按钮的标识
-let cloneEditRowIndex = ref<string>(props.editRowIndex)
+let cloneEditRowIndex = ref < string > (props.editRowIndex)
 // 监听的标识
-let watchData = ref<boolean>(false)
+let watchData = ref < boolean > (false)
 
 // 如果data的数据变了 要重新给tableData赋值
 // 只需要监听一次就可以了
@@ -277,8 +251,10 @@ let rowClick = (row: any, column: any) => {
   left: 12px;
   cursor: pointer;
 }
+
 .action-icon {
   display: flex;
+
   svg {
     width: 1em;
     height: 1em;
@@ -287,13 +263,16 @@ let rowClick = (row: any, column: any) => {
     top: 8px;
     cursor: pointer;
   }
+
   .check {
     color: red;
   }
+
   .close {
     color: green;
   }
 }
+
 .pagination {
   margin-top: 16px;
   display: flex;

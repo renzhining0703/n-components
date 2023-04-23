@@ -1,64 +1,25 @@
 <template>
-  <el-form
-    ref="form"
-    v-if="model"
-    :validate-on-rule-change="false"
-    :model="model"
-    :rules="rules"
-    v-bind="$attrs"
-  >
+  <el-form ref="form" v-if="model" :validate-on-rule-change="false" :model="model" :rules="rules" v-bind="$attrs">
     <el-row>
       <template v-for="(item, index) in options" :key="index">
         <el-col v-bind="colLayout">
-          <el-form-item
-            v-if="!item.children || !item.children!.length"
-            :prop="item.prop"
-            :label="item.label"
-          >
-            <component
-              v-if="item.type !== 'upload' && item.type !== 'editor'"
-              :placeholder="item.placeholder"
-              v-bind="item.attrs"
-              :is="`el-${item.type}`"
-              v-model="model[item.prop!]"
-            ></component>
-            <el-upload
-              v-if="item.type === 'upload'"
-              v-bind="item.uploadAttrs"
-              :on-preview="onPreview"
-              :on-remove="onRemove"
-              :on-success="onSuccess"
-              :on-error="onError"
-              :on-progress="onProgress"
-              :on-change="onChange"
-              :before-upload="beforeUpload"
-              :before-remove="beforeRemove"
-              :http-request="httpRequest"
-              :on-exceed="onExceed"
-            >
+          <el-form-item v-if="!item.children || !item.children!.length" :prop="item.prop" :label="item.label">
+            <component v-if="item.type !== 'upload' && item.type !== 'editor'" :placeholder="item.placeholder"
+              v-bind="item.attrs" :is="`el-${item.type}`" v-model="model[item.prop!]"></component>
+            <el-upload v-if="item.type === 'upload'" v-bind="item.uploadAttrs" :on-preview="onPreview"
+              :on-remove="onRemove" :on-success="onSuccess" :on-error="onError" :on-progress="onProgress"
+              :on-change="onChange" :before-upload="beforeUpload" :before-remove="beforeRemove"
+              :http-request="httpRequest" :on-exceed="onExceed">
               <slot name="uploadArea"></slot>
               <slot name="uploadTip"></slot>
             </el-upload>
             <div id="editor" v-if="item.type === 'editor'"></div>
           </el-form-item>
-          <el-form-item
-            v-if="item.children && item.children.length"
-            :prop="item.prop"
-            :label="item.label"
-          >
-            <component
-              :placeholder="item.placeholder"
-              v-bind="item.attrs"
-              :is="`el-${item.type}`"
-              v-model="model[item.prop]"
-            >
-              <component
-                v-for="(child, i) in item.children"
-                :key="i"
-                :is="`el-${child.type}`"
-                :label="child.label"
-                :value="child.value"
-              ></component>
+          <el-form-item v-if="item.children && item.children.length" :prop="item.prop" :label="item.label">
+            <component :placeholder="item.placeholder" v-bind="item.attrs" :is="`el-${item.type}`"
+              v-model="model[item.prop]">
+              <component v-for="(child, i) in item.children" :key="i" :is="`el-${child.type}`" :label="child.label"
+                :value="child.value"></component>
             </component>
           </el-form-item>
         </el-col>
@@ -71,7 +32,7 @@
   </el-form>
 </template>
 
-<script lang="ts" setup>
+<script lang="js" setup>
 import { PropType, ref, onMounted, watch, nextTick } from 'vue'
 import { FormInstance, FormOptions } from './types/types'
 import cloneDeep from 'lodash/cloneDeep'
@@ -111,9 +72,9 @@ let props = defineProps({
   }
 })
 
-let model = ref<any>(null)
-let rules = ref<any>(null)
-let form = ref<FormInstance | null>()
+let model = ref < any > (null)
+let rules = ref < any > (null)
+let form = ref < FormInstance | null > ()
 let edit = ref()
 
 // 初始化表单
