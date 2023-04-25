@@ -47,19 +47,5 @@ watch(() => props.percentage, (val) => {
   { immediate: true }
 )
 
-onMounted(() => {
-  // if (props.isAnimate) {
-  //   // 规定时间内加载完成
-  //   let t = Math.ceil(props.time / props.percentage)
-  //   let timer = setInterval(() => {
-  //     p.value += 1
-  //     if (p.value >= props.percentage) {
-  //       p.value = props.percentage
-  //       clearInterval(timer)
-  //     }
-  //   }, t)
-  // }
-})
 </script>
-
 <style lang='scss' scoped></style>
