@@ -9,16 +9,6 @@ import progress from "./progress";
 import chooseCity from "./chooseCity";
 import modalForm from "./modalForm";
 
-import * as Icons from "@element-plus/icons";
-import { toLine } from "./utils";
-
-/** 注册全部Icon组件 el-icon-xxx */
-const registerIcons = (app) => {
-  for (let i in Icons) {
-    app.component(`el-icon-${toLine(i)}`, (Icons as any)[i]);
-  }
-};
-
 const components = [
   chooseArea,
   chooseIcon,
@@ -32,7 +22,6 @@ const components = [
 ];
 
 const install = (app: App) => {
-  app.use(registerIcons);
   components.map((item) => {
     app.use(item);
   });

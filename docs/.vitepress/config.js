@@ -1,7 +1,7 @@
 // 配置
 module.exports = {
   // 网站标题
-  title: "治宁个人私有库",
+  title: "enlighten-ui",
   // 部署的基础路径
   base: "/",
   // 配置网站的html的head标签

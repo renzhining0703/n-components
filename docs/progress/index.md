@@ -64,15 +64,14 @@ const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
     <n-progress type="dashboard" :percentage="percentage2" :color="colors" />
     <div>
       <el-button-group>
-        <el-button :icon="Minus" @click="decrease" />
-        <el-button :icon="Plus" @click="increase" />
+        <el-button @click="decrease"> - </el-button>
+        <el-button @click="increase"> + </el-button>
       </el-button-group>
     </div>
   </div>
 
 <script lang='ts'>
 import { ref, onMounted } from 'vue'
-import { Minus, Plus } from '@element-plus/icons-vue'
 
 const percentage = ref(80)
 const percentage2 = ref(55)
@@ -124,15 +123,14 @@ onMounted(() => {
     <n-progress isAnimate type="dashboard" :percentage="percentage2" :color="colors" />
     <div>
       <el-button-group>
-        <el-button :icon="Minus" @click="decrease" />
-        <el-button :icon="Plus" @click="increase" />
+        <el-button @click="decrease" > - </el-button>
+        <el-button @click="increase" > + </el-button>
       </el-button-group>
     </div>
   </div>
 
 <script lang='ts'>
 import { ref, onMounted } from 'vue'
-import { Minus, Plus } from '@element-plus/icons-vue'
 
 const percentage = ref(80)
 const percentage2 = ref(55)

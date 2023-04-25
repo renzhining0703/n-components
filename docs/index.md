@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: n-ui
+  name: enlighten-ui
   text: 高扩展性的组件库
   tagline: 基于element-plus二次封装组件
   image:
