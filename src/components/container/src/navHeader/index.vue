@@ -24,9 +24,13 @@ let toggle = () => {
   padding: 0 20px;
   display: flex;
   align-items: center;
+  /* background-color: #001529;
+  width: 100%; */
 }
+
 svg {
   width: 1em;
   height: 1em;
+  /* color: #fff; */
 }
 </style>

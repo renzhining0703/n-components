@@ -6,15 +6,15 @@ hero:
   text: 高扩展性的组件库
   tagline: 基于element-plus二次封装组件
   image:
-    src: ./default.png
+    src: /default.png
     alt: VitePress
   actions:
     - theme: brand
-      text: Quick Start
+      text: 快速开始
       link: /intro/
     - theme: alt
-      text: View on GitHub
-      link: https://github.com/renzhining0703/n-components
+      text: 安装使用
+      link: /quickStart/
 
 features:
   - icon: ⚡️

@@ -19,13 +19,13 @@ app.use(chooseIcon);
     <n-choose-icon title="选择图标" v-model:visible="visibile">选择图标</n-choose-icon>
 <!-- </div> -->
 
-### 代码示例
-
 <script setup>
 import { ref } from  'vue'
 
 let visibile = ref(false)
 </script>
+
+::: details 显示代码
 
 ```js
 
@@ -39,3 +39,5 @@ import { ref } from  'vue'
 let visibile = ref<boolean>(false)
 </script>
 ```
+
+:::

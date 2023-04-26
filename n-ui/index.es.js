@@ -26861,11 +26861,6 @@ var modalForm = {
     app.component("n-modal-form", _sfc_main);
   }
 };
-const registerIcons = (app) => {
-  for (let i in Icons) {
-    app.component(`el-icon-${toLine(i)}`, Icons[i]);
-  }
-};
 const components = [
   chooseArea,
   chooseIcon,
@@ -26878,7 +26873,6 @@ const components = [
   modalForm
 ];
 const install = (app) => {
-  app.use(registerIcons);
   components.map((item) => {
     app.use(item);
   });
