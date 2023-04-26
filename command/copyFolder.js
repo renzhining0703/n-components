@@ -93,7 +93,7 @@ const copyFolderTodestinationFolderItem = () => {
   });
 };
 
-/** 复制 srcDir1 文件夹内容到 n-ui */
+/** 复制 srcDir 文件夹内容到 n-ui */
 copyFolder(srcDir, tarDir);
 
 /** 复制 srcDir 文件夹内容 到 n-ui下所有的文件夹中 */

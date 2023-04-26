@@ -12,7 +12,7 @@
     "doc:dev": "vitepress dev docs --host",
     "doc:build": "vitepress build docs",
     "doc:preview": "vitepress preview docs",
-    "deploy:doc": "sh deploy.sh"
+    "doc:deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@element-plus/icons": "0.0.11",
