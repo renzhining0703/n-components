@@ -1,8 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const srcDir1 = path.join(__dirname, "../cp"); // 需要复制的文件1
-const srcDir2 = path.join(__dirname, "../cp-indexD"); // 需要复制的文件2
+const srcDir = path.join(__dirname, "../cp"); // 需要复制的文件
 const tarDir = path.join(__dirname, "../n-ui"); // 复制到的目标文件
 
 // 将srcPath路径的文件复制到tarPath
@@ -65,7 +64,7 @@ const copyFolder = function (srcDir, tarDir, cb) {
   });
 };
 
-/** 获取 srcDir2 路径下所有的文件夹 */
+/** 获取 srcDir 路径下所有的文件夹 */
 const fileDisplay = (url, cb) => {
   const filePath = path.resolve(url);
   //根据文件路径读取文件，返回文件列表
@@ -90,12 +89,12 @@ const fileDisplay = (url, cb) => {
 
 const copyFolderTodestinationFolderItem = () => {
   fileDisplay(tarDir, (url) => {
-    copyFolder(srcDir2, url);
+    copyFolder(srcDir, url);
   });
 };
 
 /** 复制 srcDir1 文件夹内容到 n-ui */
-copyFolder(srcDir1, tarDir);
+copyFolder(srcDir, tarDir);
 
-/** 复制 srcDir2 文件夹内容 到 n-ui下所有的文件夹中 */
+/** 复制 srcDir 文件夹内容 到 n-ui下所有的文件夹中 */
 copyFolderTodestinationFolderItem();

@@ -70,8 +70,8 @@ const buildSingle = async (name) => {
   );
 };
 
-// 生成组件的 package.json 文件
-const createPackageJson = (name) => {
+// 生成每一个组件的 package.json 文件
+const createItemPackageJson = (name) => {
   const fileStr = `{
   "name": "${name}",
   "version": "0.0.0",
@@ -86,6 +86,27 @@ const createPackageJson = (name) => {
   );
 };
 
+// 生成n-ui文件夹内的 package.json 文件
+const createPackageJson = () => {
+  const fileStr = `{
+    "name": "n-element-components",
+    "version": "1.0.7",
+    "main": "index.umd.js",
+    "module": "index.es.js",
+    "types": "index.d.ts",
+    "author": {
+      "name": "Rzn"
+    },
+    "keywords": [
+      "element-puls",
+      "Rzn",
+      "封装组件",
+      "vue-components"
+    ]
+  }`;
+  fsExtra.outputFile(path.resolve(outputDir, `package.json`), fileStr, "utf-8");
+};
+
 const buildSingleItem = async () => {
   // 获取组件名称组成的数组
   const components = fs.readdirSync(entryDir).filter((name) => {
@@ -98,13 +119,14 @@ const buildSingleItem = async () => {
     // 构建单组件
     await buildSingle(name);
     // 生成组件的 package.json 文件
-    createPackageJson(name);
+    createItemPackageJson(name);
   }
 };
 
 /** 打包 */
 const buildLib = async () => {
   await buildAll();
+  createPackageJson();
   buildSingleItem();
 };
 
