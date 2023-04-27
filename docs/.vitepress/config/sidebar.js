@@ -9,26 +9,26 @@ export const sidebar = [
   },
   {
     text: "图标选择器",
-    link: "/chooseIcon/",
+    link: "/components/chooseIcon/",
   },
   {
     text: "进度条",
-    link: "/progress/",
+    link: "/components/progress/",
   },
   {
     text: "省市区选择器",
-    link: "/chooseArea/",
+    link: "/components/chooseArea/",
   },
   {
     text: "城市选择",
-    link: "/chooseCity/",
+    link: "/components/chooseCity/",
   },
   {
     text: "趋势标记",
-    link: "/trend/",
+    link: "/components/trend/",
   },
   {
     text: "通知",
-    link: "/notification/",
+    link: "/components/notification/",
   },
 ];
