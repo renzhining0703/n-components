@@ -4763,7 +4763,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseCity = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-29441af1"]]);
+var chooseCity = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-347d3d8e"]]);
 var index = {
   install(app) {
     app.component("n-choose-city", chooseCity);

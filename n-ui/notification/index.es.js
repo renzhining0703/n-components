@@ -59,7 +59,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var notification = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-3441528b"]]);
+var notification = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1f4f9be4"]]);
 var index = {
   install(app) {
     app.component("n-notification", notification);

@@ -79,7 +79,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var trend = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-93606bfe"]]);
+var trend = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-43bdd944"]]);
 var index = {
   install(app) {
     app.component("n-trend", trend);

@@ -52,6 +52,7 @@ const buildAll = async () => {
   );
 };
 
+/** 构建单组件 */
 const buildSingle = async (name) => {
   await build(
     defineConfig({
@@ -70,7 +71,7 @@ const buildSingle = async (name) => {
   );
 };
 
-// 生成每一个组件的 package.json 文件
+// 生成 n-ui下 每一个组件的 package.json 文件
 const createItemPackageJson = (name) => {
   const fileStr = `{
   "name": "${name}",
@@ -86,7 +87,7 @@ const createItemPackageJson = (name) => {
   );
 };
 
-// 生成n-ui文件夹内的 package.json 文件
+/** 生成n-ui文件夹内的 package.json 文件 */
 const createPackageJson = () => {
   const fileStr = `{
     "name": "n-element-components",
@@ -107,6 +108,37 @@ const createPackageJson = () => {
   fsExtra.outputFile(path.resolve(outputDir, `package.json`), fileStr, "utf-8");
 };
 
+/** 生成n-ui文件夹内的 index.d.ts 文件 */
+const createIndexdts = () => {
+  const fileStr = `
+  import { App } from "vue";
+
+  declare const _default: {
+    install(app: App): void;
+  };
+  
+  export default _default;`;
+  fsExtra.outputFile(path.resolve(outputDir, `index.d.ts`), fileStr, "utf-8");
+};
+
+/** 生成n-ui文件夹内 所有文件的 index.d.ts 文件 */
+const createItemIndexdts = (name) => {
+  const fileStr = `
+  import { App } from "vue";
+
+  declare const _default: {
+    install(app: App): void;
+  };
+  
+  export default _default;`;
+  fsExtra.outputFile(
+    path.resolve(outputDir, `${name}/index.d.ts`),
+    fileStr,
+    "utf-8"
+  );
+};
+
+/** 打包出每一个单组件 */
 const buildSingleItem = async () => {
   // 获取组件名称组成的数组
   const components = fs.readdirSync(entryDir).filter((name) => {
@@ -120,6 +152,8 @@ const buildSingleItem = async () => {
     await buildSingle(name);
     // 生成组件的 package.json 文件
     createItemPackageJson(name);
+    // 生成组件的 index.d.ts 文件
+    createItemIndexdts(name);
   }
 };
 
@@ -127,6 +161,7 @@ const buildSingleItem = async () => {
 const buildLib = async () => {
   await buildAll();
   createPackageJson();
+  createIndexdts();
   buildSingleItem();
 };
 

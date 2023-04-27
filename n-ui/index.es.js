@@ -21505,7 +21505,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-95e17112"]]);
+var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-375ea93a"]]);
 var chooseIcon = {
   install(app) {
     app.component("n-choose-icon", chooseIcon$1);
@@ -21581,7 +21581,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-93606bfe"]]);
+var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-43bdd944"]]);
 var trend = {
   install(app) {
     app.component("n-trend", trend$1);
@@ -21637,7 +21637,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-3441528b"]]);
+var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-1f4f9be4"]]);
 var notification = {
   install(app) {
     app.component("n-notification", notification$1);
@@ -21765,7 +21765,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-62996acf"]]);
+var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-acc0c628"]]);
 var list = {
   install(app) {
     app.component("n-list", list$1);
@@ -21858,7 +21858,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-61bf4712"]]);
+var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-7034fb58"]]);
 var index$1 = "";
 function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
@@ -26739,7 +26739,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-29441af1"]]);
+var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-347d3d8e"]]);
 var chooseCity = {
   install(app) {
     app.component("n-choose-city", chooseCity$1);

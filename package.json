@@ -8,7 +8,7 @@
     "build:components": "node ./command/build.js",
     "build:copy": "node ./command/copyFolder.js",
     "copyFolder": "pnpm run build:copy",
-    "lib": "pnpm run build:components && pnpm run copyFolder && cp package.json",
+    "lib": "pnpm run build:components && cp package.json",
     "doc:dev": "vitepress dev docs --host",
     "doc:build": "vitepress build docs",
     "doc:preview": "vitepress preview docs",
