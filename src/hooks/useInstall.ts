@@ -1,18 +1,47 @@
-import { App, Plugin } from 'vue'
+import type { App, Directive, Component } from 'vue'
 
-type SFCWithInstall<T> = T & Plugin
+export type Install<T> = T & {
+  install(app: App): void
+}
 
-export const useInstall = <T, E extends Record<string, any>>(main: T, extra?: E) => {
-  ;(main as SFCWithInstall<T>).install = (app: App) => {
-    for (const comp of [main, ...Object.values(extra ?? {})]) {
-      app.component(comp.name, comp)
-    }
+/**
+ * 注册组件
+ *
+ * @param { Object } main 组件实例
+ * @returns { Object } 组件实例
+ */
+export const useInstall = <T extends Component>(main: T): Install<T> => {
+  ;(main as Record<string, unknown>).install = (app: App): void => {
+    const { name } = main
+    name && app.component(name, main)
   }
-  if (extra) {
-    for (const [compName, comp] of Object.entries(extra)) {
-      ;(main as Record<string, any>)[compName] = comp
-    }
+  return main as Install<T>
+}
+
+/**
+ * 注册内置组件
+ * 例如 message 组件
+ * @param { Object } main 组件实例
+ * @param { string } name 组件名
+ * @returns { Object } 组件实例
+ */
+export const useInstallFn = <T>(main: T, name: string): Install<T> => {
+  ;(main as Install<T>).install = (app: App): void => {
+    app.config.globalProperties[name] = main as Install<T>
   }
-  // 将 T 断言为具体的类型 T & plugin & Record<string, any>
-  return main as SFCWithInstall<T> & E
+  return main as Install<T>
+}
+
+/**
+ * 注册自定义指令组件
+ *
+ * @param { Object } main 组件实例
+ * @param { string } name 组件名
+ * @returns { Object } 组件实例
+ */
+export const useInstallDirective = <T extends Directive>(main: T, name: string): Install<T> => {
+  ;(main as Install<T>).install = (app: App): void => {
+    app.directive(name, main as Install<T>)
+  }
+  return main as Install<T>
 }

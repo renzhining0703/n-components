@@ -8,7 +8,7 @@ import { globalRegister } from './global'
 import nUI from './components'
 
 /** 引入全量打包的文件 使用测试 */
-// import nUI from '../n-ui/n-element-components.es'
+// import nUI from '../n-ui/index.es.js'
 // import '../n-ui/style.css'
 
 /** 单独引入组件 使用测试 */
@@ -19,6 +19,6 @@ const app = createApp(App)
 
 app.use(globalRegister)
 app.use(router)
-// .use(chooseIcon)
+// app.use(chooseIcon)
 app.use(nUI)
 app.mount('#app', true)
