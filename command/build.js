@@ -162,12 +162,18 @@ const buildSingleItem = async () => {
   }
 };
 
+const buildFuns = [
+  buildAll,
+  createPackageJson,
+  createIndexdts,
+  buildSingleItem,
+];
+
 /** 打包 */
-const buildLib = async () => {
-  await buildAll();
-  createPackageJson();
-  createIndexdts();
-  buildSingleItem();
+const buildLib = () => {
+  buildFuns.reduce((pre, next) => {
+    return pre.then(() => next());
+  }, Promise.resolve());
 };
 
 /** 执行buildLib */
