@@ -8,6 +8,10 @@ export const sidebar = [
     link: "/quickStart/",
   },
   {
+    text: "节流按钮",
+    link: "/components/button/",
+  },
+  {
     text: "图标选择器",
     link: "/components/chooseIcon/",
   },

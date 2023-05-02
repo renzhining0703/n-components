@@ -14,7 +14,68 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { defineComponent, ref, watch, resolveComponent, openBlock, createElementBlock, createVNode, unref, isRef, withCtx, Fragment, renderList, createBlock, warn, getCurrentScope, onScopeDispose, computed, onMounted, Transition, withDirectives, createElementVNode, normalizeClass, normalizeStyle, createCommentVNode, renderSlot, toDisplayString, withModifiers, vShow, isVNode, render as render$4p, resolveDynamicComponent, useSlots, createTextVNode, mergeProps, useAttrs, normalizeProps, guardReactiveProps } from "vue";
+import { defineComponent, createVNode, resolveComponent, mergeProps, ref, watch, openBlock, createElementBlock, unref, isRef, withCtx, Fragment, renderList, createBlock, warn, getCurrentScope, onScopeDispose, computed, onMounted, Transition, withDirectives, createElementVNode, normalizeClass, normalizeStyle, createCommentVNode, renderSlot, toDisplayString, withModifiers, vShow, isVNode, render as render$4p, resolveDynamicComponent, useSlots, createTextVNode, useAttrs, normalizeProps, guardReactiveProps } from "vue";
+function useClickThrottle(handle, wait = 1e3) {
+  let timeoutId = null;
+  function fn(...args) {
+    if (!timeoutId) {
+      handle.apply(this, args);
+      timeoutId = setTimeout(() => timeoutId = null, wait);
+    }
+  }
+  return wait > 0 ? fn : handle;
+}
+var NButton = defineComponent({
+  name: "NButton",
+  props: {
+    throttle: {
+      type: Number,
+      default: 1e3
+    }
+  },
+  emits: ["click"],
+  setup(props, {
+    slots,
+    attrs,
+    emit
+  }) {
+    const handleClick = () => {
+      emit("click");
+    };
+    return {
+      slots,
+      emit,
+      attrs,
+      props,
+      handleClick
+    };
+  },
+  render() {
+    const {
+      handleClick,
+      attrs,
+      slots,
+      props
+    } = this;
+    const throttleClick = useClickThrottle(handleClick, props.throttle);
+    return createVNode(resolveComponent("el-button"), mergeProps(attrs, {
+      "onClick": throttleClick
+    }), {
+      default: () => {
+        var _a;
+        return [(_a = slots.default) == null ? void 0 : _a.call(slots)];
+      }
+    });
+  }
+});
+const useInstall = (main) => {
+  main.install = (app) => {
+    const { name } = main;
+    name && app.component(name, main);
+  };
+  return main;
+};
+var button = useInstall(NButton);
 var allAreas = [
   {
     code: "11",
@@ -21505,7 +21566,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-375ea93a"]]);
+var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-95e17112"]]);
 var chooseIcon = {
   install(app) {
     app.component("n-choose-icon", chooseIcon$1);
@@ -21581,7 +21642,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-43bdd944"]]);
+var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-93606bfe"]]);
 var trend = {
   install(app) {
     app.component("n-trend", trend$1);
@@ -21637,7 +21698,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-1f4f9be4"]]);
+var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-3441528b"]]);
 var notification = {
   install(app) {
     app.component("n-notification", notification$1);
@@ -21765,7 +21826,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-acc0c628"]]);
+var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-62996acf"]]);
 var list = {
   install(app) {
     app.component("n-list", list$1);
@@ -21858,7 +21919,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-7034fb58"]]);
+var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-61bf4712"]]);
 var index$1 = "";
 function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
@@ -26739,7 +26800,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-347d3d8e"]]);
+var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-29441af1"]]);
 var chooseCity = {
   install(app) {
     app.component("n-choose-city", chooseCity$1);
@@ -26862,6 +26923,7 @@ var modalForm = {
   }
 };
 const components = [
+  button,
   chooseArea,
   chooseIcon,
   trend,
@@ -26880,4 +26942,4 @@ const install = (app) => {
 var index = {
   install
 };
-export { chooseArea, chooseCity, chooseIcon, index as default, install, list, menu, modalForm, notification, progress, trend };
+export { button, chooseArea, chooseCity, chooseIcon, index as default, install, list, menu, modalForm, notification, progress, trend };

@@ -131,7 +131,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var list = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-acc0c628"]]);
+var list = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-62996acf"]]);
 var index = {
   install(app) {
     app.component("n-list", list);

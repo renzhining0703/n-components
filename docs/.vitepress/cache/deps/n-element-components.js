@@ -39,7 +39,7 @@ import {
   withModifiers
 } from "./chunk-2JTJ26FZ.js";
 
-// node_modules/.pnpm/n-element-components@1.0.6/node_modules/n-element-components/index.es.js
+// node_modules/.pnpm/n-element-components@1.0.9/node_modules/n-element-components/index.es.js
 init_vue_runtime_esm_bundler();
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -57,6 +57,67 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+function useClickThrottle(handle, wait = 1e3) {
+  let timeoutId = null;
+  function fn(...args) {
+    if (!timeoutId) {
+      handle.apply(this, args);
+      timeoutId = setTimeout(() => timeoutId = null, wait);
+    }
+  }
+  return wait > 0 ? fn : handle;
+}
+var NButton = defineComponent({
+  name: "NButton",
+  props: {
+    throttle: {
+      type: Number,
+      default: 1e3
+    }
+  },
+  emits: ["click"],
+  setup(props, {
+    slots,
+    attrs,
+    emit
+  }) {
+    const handleClick = () => {
+      emit("click");
+    };
+    return {
+      slots,
+      emit,
+      attrs,
+      props,
+      handleClick
+    };
+  },
+  render() {
+    const {
+      handleClick,
+      attrs,
+      slots,
+      props
+    } = this;
+    const throttleClick = useClickThrottle(handleClick, props.throttle);
+    return createVNode(resolveComponent("el-button"), mergeProps(attrs, {
+      "onClick": throttleClick
+    }), {
+      default: () => {
+        var _a;
+        return [(_a = slots.default) == null ? void 0 : _a.call(slots)];
+      }
+    });
+  }
+});
+var useInstall = (main) => {
+  main.install = (app) => {
+    const { name } = main;
+    name && app.component(name, main);
+  };
+  return main;
+};
+var button = useInstall(NButton);
 var allAreas = [
   {
     code: "11",
@@ -26896,12 +26957,8 @@ var modalForm = {
     app.component("n-modal-form", _sfc_main);
   }
 };
-var registerIcons = (app) => {
-  for (let i in Icons) {
-    app.component(`el-icon-${toLine(i)}`, Icons[i]);
-  }
-};
 var components = [
+  button,
   chooseArea,
   chooseIcon,
   trend,
@@ -26913,7 +26970,6 @@ var components = [
   modalForm
 ];
 var install = (app) => {
-  app.use(registerIcons);
   components.map((item) => {
     app.use(item);
   });
@@ -26922,6 +26978,7 @@ var index = {
   install
 };
 export {
+  button,
   chooseArea,
   chooseCity,
   chooseIcon,
