@@ -1,16 +1,11 @@
 <template>
-    <el-button @click="handleClick" type="primary">
-        <slot></slot>
-    </el-button>
-    <div class="n-choose-icon-dialog-body-height">
-        <el-dialog :title="title" v-model="dialogVisible">
-        <div class="container">
-        <div
-          class="item"
-          v-for="(item, index) in Object.keys(ElIcons)"
-          :key="index"
-          @click="clickItem(item)"
-        >
+  <el-button @click="handleClick" type="primary">
+    <slot></slot>
+  </el-button>
+  <div class="n-choose-icon-dialog-body-height">
+    <el-dialog :title="title" v-model="dialogVisible">
+      <div class="container">
+        <div class="item" v-for="(item, index) in Object.keys(ElIcons)" :key="index" @click="clickItem(item)">
           <div class="text">
             <component :is="`el-icon-${toLine(item)}`"></component>
           </div>
@@ -18,7 +13,7 @@
         </div>
       </div>
     </el-dialog>
-    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -27,17 +22,17 @@ import * as ElIcons from '@element-plus/icons'
 import { toLine } from '../../../utils'
 import { useCopy } from '../../../hooks/useCopy'
 let props = defineProps<{
- // 弹出框标题
- title: string,
- // 控制弹出框的显示与隐藏
- visible: boolean   
+  // 弹出框标题
+  title: string,
+  // 控制弹出框的显示与隐藏
+  visible: boolean
 }>()
 
 let emits = defineEmits(['update:visible'])
 let dialogVisible = ref<boolean>(props.visible)
 
 const handleClick = () => {
-   emits('update:visible', !props.visible)  
+  emits('update:visible', !props.visible)
 }
 
 // 点击图标
@@ -51,7 +46,7 @@ let clickItem = (item: string) => {
 
 // 监听visible的变化 只能监听第一次的变化
 watch(() => props.visible, val => {
-    dialogVisible.value = val
+  dialogVisible.value = val
 })
 
 // 监听组件内部的dialogVisible变化
@@ -67,6 +62,7 @@ watch(() => dialogVisible.value, val => {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .item {
   width: 25%;
   display: flex;
@@ -77,12 +73,15 @@ watch(() => dialogVisible.value, val => {
   cursor: pointer;
   height: 70px;
 }
+
 .text {
   font-size: 14px;
 }
+
 .icon {
   flex: 1;
 }
+
 svg {
   width: 2em;
   height: 2em;

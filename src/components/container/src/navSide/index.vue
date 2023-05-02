@@ -15,6 +15,11 @@ let data = [
   },
   {
     icon: 'Check',
+    name: '节流按钮',
+    index: '/button'
+  },
+  {
+    icon: 'Check',
     name: '图标选择器',
     index: '/chooseIcon'
   },
