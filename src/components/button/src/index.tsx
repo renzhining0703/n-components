@@ -1,4 +1,4 @@
-import { PropType, defineComponent, watch, ref } from 'vue'
+import { PropType, defineComponent } from 'vue'
 import { useClickThrottle } from '../../../hooks/useClickThrottle'
 
 export default defineComponent({
@@ -11,26 +11,24 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, { slots, attrs, emit }) {
-    const handleClick = useClickThrottle(() => {
-      console.log('click', props.throttle)
+    const handleClick = () => {
       emit('click')
-    }, props.throttle)
-
-    // const record = ref(0)
-    // const handleClick = () => {
-    //   let newTime = new Date()
-    //   if (newTime.getTime() - record.value > props.throttle) {
-    //     emit('click')
-    //   }
-    //   record.value = new Date().getTime()
-    // }
-
-    return () => {
-      return (
-        <el-button {...attrs} onClick={handleClick}>
-          {slots.default?.()}
-        </el-button>
-      )
     }
+    return {
+      slots,
+      emit,
+      attrs,
+      props,
+      handleClick
+    }
+  },
+  render() {
+    const { handleClick, attrs, slots, props } = this
+    const throttleClick = useClickThrottle(handleClick, props.throttle)
+    return (
+      <el-button {...attrs} onClick={throttleClick}>
+        {slots.default?.()}
+      </el-button>
+    )
   }
 })
