@@ -14,7 +14,7 @@ export default defineComponent({
     }
   },
   emits: ['click'],
-  setup(props, { emit, attrs }) {
+  setup(props, { emit, attrs, expose }) {
     const time = ref<number>(0)
 
     const disabled = ref<boolean>(false)
@@ -28,9 +28,9 @@ export default defineComponent({
       start()
     }
 
-    // const reset = () => {
-    //   time.value = 0
-    // }
+    const reset = () => {
+      time.value = 0
+    }
 
     const start = () => {
       time.value = props.second
@@ -46,6 +46,9 @@ export default defineComponent({
         disabled.value = false
       }
     }
+
+    /** 像父组件暴露 reset 方法 */
+    expose({ reset })
 
     return () => {
       return (
