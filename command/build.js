@@ -6,7 +6,7 @@ const vue = require("@vitejs/plugin-vue");
 const vueJsx = require("@vitejs/plugin-vue-jsx");
 
 /** 配置 打包入口文件 */
-const entryDir = path.resolve(__dirname, "../libs");
+const entryDir = path.resolve(__dirname, "../src/components");
 /** 配置 出口文件夹 */
 const outputDir = path.resolve(__dirname, "../n-ui");
 /** 打包完成需要删除的文件夹 */

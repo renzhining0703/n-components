@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, onMounted, resolveComponent, openBlock, createBlock, mergeProps, unref } from "vue";
+import { defineComponent, ref, watch, resolveComponent, openBlock, createBlock, mergeProps, unref } from "vue";
 const _sfc_main = /* @__PURE__ */ defineComponent({
   props: {
     percentage: {
@@ -32,8 +32,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }
       p.value = props.percentage;
     }, { immediate: true });
-    onMounted(() => {
-    });
     return (_ctx, _cache) => {
       const _component_el_progress = resolveComponent("el-progress");
       return openBlock(), createBlock(_component_el_progress, mergeProps({ percentage: unref(p) }, _ctx.$attrs), null, 16, ["percentage"]);

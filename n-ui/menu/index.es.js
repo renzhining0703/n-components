@@ -112,7 +112,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var menu = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-61bf4712"]]);
+var menu = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5005a247"]]);
 var script$8K = defineComponent({
   name: "Aim"
 });

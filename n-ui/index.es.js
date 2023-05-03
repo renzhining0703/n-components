@@ -16,8 +16,10 @@ var __spreadValues = (a, b) => {
 };
 import { defineComponent, createVNode, resolveComponent, mergeProps, ref, watch, openBlock, createElementBlock, unref, isRef, withCtx, Fragment, renderList, createBlock, warn, getCurrentScope, onScopeDispose, computed, onMounted, Transition, withDirectives, createElementVNode, normalizeClass, normalizeStyle, createCommentVNode, renderSlot, toDisplayString, withModifiers, vShow, isVNode, render as render$4p, resolveDynamicComponent, useSlots, createTextVNode, useAttrs, normalizeProps, guardReactiveProps } from "vue";
 function useClickThrottle(handle, wait = 1e3) {
+  console.log("useClickThrottle", wait);
   let timeoutId = null;
   function fn(...args) {
+    console.log("wait", wait);
     if (!timeoutId) {
       handle.apply(this, args);
       timeoutId = setTimeout(() => timeoutId = null, wait);
@@ -21566,7 +21568,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-95e17112"]]);
+var chooseIcon$1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-c3dc3f1c"]]);
 var chooseIcon = {
   install(app) {
     app.component("n-choose-icon", chooseIcon$1);
@@ -21642,7 +21644,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-93606bfe"]]);
+var trend$1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-ccd785ae"]]);
 var trend = {
   install(app) {
     app.component("n-trend", trend$1);
@@ -21698,7 +21700,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-3441528b"]]);
+var notification$1 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-d63cd036"]]);
 var notification = {
   install(app) {
     app.component("n-notification", notification$1);
@@ -21826,7 +21828,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-62996acf"]]);
+var list$1 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3ec3227b"]]);
 var list = {
   install(app) {
     app.component("n-list", list$1);
@@ -21919,7 +21921,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-61bf4712"]]);
+var menu$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-5005a247"]]);
 var index$1 = "";
 function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
@@ -22030,8 +22032,6 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       }
       p.value = props.percentage;
     }, { immediate: true });
-    onMounted(() => {
-    });
     return (_ctx, _cache) => {
       const _component_el_progress = resolveComponent("el-progress");
       return openBlock(), createBlock(_component_el_progress, mergeProps({ percentage: unref(p) }, _ctx.$attrs), null, 16, ["percentage"]);
@@ -26800,7 +26800,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-29441af1"]]);
+var chooseCity$1 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-57c77ebe"]]);
 var chooseCity = {
   install(app) {
     app.component("n-choose-city", chooseCity$1);

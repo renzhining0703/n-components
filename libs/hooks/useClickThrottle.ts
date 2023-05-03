@@ -1,8 +1,4 @@
-declare type Nullable<T> = T | null
-declare interface Fn<T = any, R = T> {
-  (...arg: T[]): R
-}
-declare type TimeoutHandle = ReturnType<typeof setTimeout>
+import type { Nullable, Fn, TimeoutHandle } from '../types/index'
 
 export function useClickThrottle(handle: Fn, wait = 1000) {
   let timeoutId: Nullable<TimeoutHandle> = null

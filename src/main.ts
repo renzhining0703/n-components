@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 
-// import ElementPlus from 'element-plus'
+import router from './router'
 import 'element-plus/dist/index.css'
 import { globalRegister } from './global'
-import nUI from '../libs'
+// import nUI from '../libs'
+import nUI from '../src/components'
 
 /** 引入全量打包的文件 使用测试 */
 // import nUI from '../n-ui/index.es.js'

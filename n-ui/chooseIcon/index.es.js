@@ -6849,7 +6849,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var chooseIcon = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-95e17112"]]);
+var chooseIcon = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-c3dc3f1c"]]);
 var index = {
   install(app) {
     app.component("n-choose-icon", chooseIcon);
