@@ -1,5 +1,5 @@
-import { PropType, defineComponent, ref, computed } from 'vue'
-// import './index.css'
+import { PropType, defineComponent } from 'vue'
+import { useItemFn } from './useItemFn'
 
 export default defineComponent({
   name: 'NTimeButton',
@@ -15,40 +15,8 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, { emit, attrs, expose }) {
-    const time = ref<number>(0)
-
-    const disabled = ref<boolean>(false)
-
-    const text = computed<string>(() => {
-      return time.value > 0 ? `${time.value}s` : '获取验证码'
-    })
-
-    const handleClick = () => {
-      emit('click')
-      start()
-    }
-
-    const reset = () => {
-      time.value = 0
-    }
-
-    const start = () => {
-      time.value = props.second
-      disabled.value = true
-      timer()
-    }
-
-    const timer = () => {
-      if (time.value > 0) {
-        time.value--
-        setTimeout(timer, 1000)
-      } else {
-        disabled.value = false
-      }
-    }
-
-    /** 像父组件暴露 reset 方法 */
-    expose({ reset })
+    const { text, time, disabled, handleClick, reset } = useItemFn(props, emit)
+    expose({ reset }) //  像父组件暴露 reset 方法
 
     return () => {
       return (
