@@ -5,7 +5,7 @@ import router from './router'
 // import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import { globalRegister } from './global'
-import nUI from './components'
+import nUI from '../libs'
 
 /** 引入全量打包的文件 使用测试 */
 // import nUI from '../n-ui/index.es.js'
@@ -13,7 +13,7 @@ import nUI from './components'
 
 /** 单独引入组件 使用测试 */
 // import chooseIcon from '../n-ui/chooseIcon/index.es.js'
-// import '../n-ui/chooseIcon/style.css'
+// import '../n-ui/chooseIcon/style.css'gGA4D#
 
 const app = createApp(App)
 

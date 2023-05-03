@@ -5,10 +5,10 @@
 ### 按需引入
 
 ```js
-import NButton from "n-element-components/button";
+import NButton from 'n-element-components/button'
 
 // main.ts
-app.use(NButton);
+app.use(NButton)
 ```
 
 ### 基本用法
