@@ -16,8 +16,7 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { emit, attrs, expose }) {
     const { text, time, disabled, handleClick, reset } = useItemFn(props, emit)
-    expose({ reset }) //  像父组件暴露 reset 方法
-
+    expose({ reset }) //  暴露 reset 方法
     return () => {
       return (
         <el-button

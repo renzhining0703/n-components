@@ -20,6 +20,11 @@ let data = [
   },
   {
     icon: 'Check',
+    name: '获取验证码按钮',
+    index: '/time-button'
+  },
+  {
+    icon: 'Check',
     name: '图标选择器',
     index: '/chooseIcon'
   },

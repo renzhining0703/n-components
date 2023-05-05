@@ -17,7 +17,7 @@ specifiers:
   fs-extra: ^11.1.1
   lodash: ^4.17.21
   mockjs: ^1.1.0
-  n-element-components: ^1.0.9
+  n-element-components: ^1.1.1
   sass: ^1.43.2
   sass-loader: ^12.2.0
   three: 0.121.0
@@ -41,7 +41,7 @@ dependencies:
   babel-plugin-import: 1.13.6
   element-plus: 1.1.0-beta.24_vue@3.2.33
   lodash: 4.17.21
-  n-element-components: 1.0.9
+  n-element-components: 1.1.1
   three: 0.121.0
   vanta: 0.5.24
   vue: 3.2.33
@@ -1932,8 +1932,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /n-element-components/1.0.9:
-    resolution: {integrity: sha512-18/agzx+5+w7NpxJBcs6MObJvqyURO/LmqQawbNDWUkQgyYXRDT6b71pEX/tnMA90KXW5nbItdRtODlOCj9e5Q==}
+  /n-element-components/1.1.1:
+    resolution: {integrity: sha512-aMTg7U4UPrwY281yvS7oBtbPLULqR/ZKGOtwSzGiD0F5y0Y5+Nkcpr8ON4zZtWngwGT7LSHMHQWdihnshg+0dA==}
     dev: false
 
   /nanoid/3.3.4:

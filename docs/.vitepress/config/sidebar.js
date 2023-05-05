@@ -12,6 +12,10 @@ export const sidebar = [
     link: "/components/button/",
   },
   {
+    text: "获取验证码按钮",
+    link: "/components/time-button/",
+  },
+  {
     text: "图标选择器",
     link: "/components/chooseIcon/",
   },

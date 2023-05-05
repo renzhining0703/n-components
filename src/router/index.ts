@@ -16,6 +16,10 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/button/index.vue')
       },
       {
+        path: '/time-button',
+        component: () => import('../views/time-button/index.vue')
+      },
+      {
         path: '/chooseIcon',
         component: () => import('../views/chooseIcon/index.vue')
       },

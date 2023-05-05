@@ -1,5 +1,6 @@
 import { App } from "vue";
 import button from "./button";
+import timeButton from "./time-button";
 import chooseArea from "./chooseArea";
 import chooseIcon from "./chooseIcon";
 import trend from "./trend";
@@ -12,6 +13,7 @@ import modalForm from "./modalForm";
 
 const components = [
   button,
+  timeButton,
   chooseArea,
   chooseIcon,
   trend,
@@ -32,6 +34,7 @@ const install = (app: App) => {
 export {
   install,
   button,
+  timeButton,
   chooseArea,
   chooseIcon,
   trend,

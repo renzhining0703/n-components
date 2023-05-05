@@ -39,7 +39,7 @@ import {
   withModifiers
 } from "./chunk-2JTJ26FZ.js";
 
-// node_modules/.pnpm/n-element-components@1.0.9/node_modules/n-element-components/index.es.js
+// node_modules/.pnpm/n-element-components@1.1.1/node_modules/n-element-components/index.es.js
 init_vue_runtime_esm_bundler();
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -118,6 +118,80 @@ var useInstall = (main) => {
   return main;
 };
 var button = useInstall(NButton);
+var useItemFn = (props, emit) => {
+  const time = ref(0);
+  const disabled = ref(false);
+  const text = computed(() => {
+    return time.value > 0 ? `${time.value}s` : "获取验证码";
+  });
+  const handleClick = () => {
+    emit("click");
+    start();
+  };
+  const reset = () => {
+    time.value = 0;
+  };
+  const start = () => {
+    time.value = props.second;
+    disabled.value = true;
+    timer();
+  };
+  const timer = () => {
+    if (time.value > 0) {
+      time.value--;
+      setTimeout(timer, 1e3);
+    } else {
+      disabled.value = false;
+    }
+  };
+  return {
+    text,
+    time,
+    disabled,
+    handleClick,
+    reset
+  };
+};
+var NTimeButton = defineComponent({
+  name: "NTimeButton",
+  props: {
+    second: {
+      type: Number,
+      default: 60
+    },
+    type: {
+      type: String,
+      default: "primary"
+    }
+  },
+  emits: ["click"],
+  setup(props, {
+    emit,
+    attrs,
+    expose
+  }) {
+    const {
+      text,
+      time,
+      disabled,
+      handleClick,
+      reset
+    } = useItemFn(props, emit);
+    expose({
+      reset
+    });
+    return () => {
+      return createVNode(resolveComponent("el-button"), mergeProps(attrs, {
+        "type": props.type,
+        "disabled": disabled.value || time.value > 0,
+        "onClick": handleClick
+      }), {
+        default: () => [text.value]
+      });
+    };
+  }
+});
+var timeButton = useInstall(NTimeButton);
 var allAreas = [
   {
     code: "11",
@@ -21607,7 +21681,7 @@ var _sfc_main$7 = defineComponent({
     };
   }
 });
-var chooseIcon$1 = _export_sfc(_sfc_main$7, [["__scopeId", "data-v-95e17112"]]);
+var chooseIcon$1 = _export_sfc(_sfc_main$7, [["__scopeId", "data-v-c3dc3f1c"]]);
 var chooseIcon = {
   install(app) {
     app.component("n-choose-icon", chooseIcon$1);
@@ -21682,7 +21756,7 @@ var _sfc_main$6 = defineComponent({
     };
   }
 });
-var trend$1 = _export_sfc(_sfc_main$6, [["__scopeId", "data-v-93606bfe"]]);
+var trend$1 = _export_sfc(_sfc_main$6, [["__scopeId", "data-v-ccd785ae"]]);
 var trend = {
   install(app) {
     app.component("n-trend", trend$1);
@@ -21737,7 +21811,7 @@ var _sfc_main$5 = defineComponent({
     };
   }
 });
-var notification$1 = _export_sfc(_sfc_main$5, [["__scopeId", "data-v-3441528b"]]);
+var notification$1 = _export_sfc(_sfc_main$5, [["__scopeId", "data-v-d63cd036"]]);
 var notification = {
   install(app) {
     app.component("n-notification", notification$1);
@@ -21864,7 +21938,7 @@ var _sfc_main$4 = defineComponent({
     };
   }
 });
-var list$1 = _export_sfc(_sfc_main$4, [["__scopeId", "data-v-62996acf"]]);
+var list$1 = _export_sfc(_sfc_main$4, [["__scopeId", "data-v-3ec3227b"]]);
 var list = {
   install(app) {
     app.component("n-list", list$1);
@@ -21956,7 +22030,7 @@ var _sfc_main$3 = defineComponent({
     };
   }
 });
-var menu$1 = _export_sfc(_sfc_main$3, [["__scopeId", "data-v-61bf4712"]]);
+var menu$1 = _export_sfc(_sfc_main$3, [["__scopeId", "data-v-5005a247"]]);
 function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
@@ -22066,8 +22140,6 @@ var _sfc_main$2 = defineComponent({
       }
       p.value = props.percentage;
     }, { immediate: true });
-    onMounted(() => {
-    });
     return (_ctx, _cache) => {
       const _component_el_progress = resolveComponent("el-progress");
       return openBlock(), createBlock(_component_el_progress, mergeProps({ percentage: unref(p) }, _ctx.$attrs), null, 16, ["percentage"]);
@@ -26835,7 +26907,7 @@ var _sfc_main$1 = defineComponent({
     };
   }
 });
-var chooseCity$1 = _export_sfc(_sfc_main$1, [["__scopeId", "data-v-29441af1"]]);
+var chooseCity$1 = _export_sfc(_sfc_main$1, [["__scopeId", "data-v-57c77ebe"]]);
 var chooseCity = {
   install(app) {
     app.component("n-choose-city", chooseCity$1);
@@ -26959,6 +27031,7 @@ var modalForm = {
 };
 var components = [
   button,
+  timeButton,
   chooseArea,
   chooseIcon,
   trend,
@@ -26989,6 +27062,7 @@ export {
   modalForm,
   notification,
   progress,
+  timeButton,
   trend
 };
 //# sourceMappingURL=n-element-components.js.map

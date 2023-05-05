@@ -1,9 +1,7 @@
 import { defineComponent, createVNode, resolveComponent, mergeProps } from "vue";
 function useClickThrottle(handle, wait = 1e3) {
-  console.log("useClickThrottle", wait);
   let timeoutId = null;
   function fn(...args) {
-    console.log("wait", wait);
     if (!timeoutId) {
       handle.apply(this, args);
       timeoutId = setTimeout(() => timeoutId = null, wait);

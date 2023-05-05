@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
-export const useItemFn = (props, emit) => {
+
+export const useItemFn = (props: any, emit: any) => {
     const time = ref<number>(0)
 
     const disabled = ref<boolean>(false)
