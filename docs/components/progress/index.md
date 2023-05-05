@@ -5,11 +5,11 @@
 ### 按需引入
 
 ```js
-import progress from "n-element-components/progress";
-import "n-element-components/progress/style.css";
+import progress from 'n-element-components/progress'
+import 'n-element-components/progress/style.css'
 
 // main.ts
-app.use(progress);
+app.use(progress)
 ```
 
 ### 基本用法
@@ -38,11 +38,11 @@ const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
 
 ```js
  <div class="demo-progress">
-    <n-progress :percentage="50" />
-    <n-progress :percentage="100" :format="format" />
-    <n-progress :percentage="100" status="success" />
-    <n-progress :percentage="100" status="warning" />
-    <n-progress :percentage="50" status="exception" />
+    <n-progress isAnimate :percentage="50" />
+    <n-progress isAnimate :percentage="100" :format="format" />
+    <n-progress isAnimate :percentage="100" status="success" />
+    <n-progress isAnimate :percentage="100" status="warning" />
+    <n-progress isAnimate :percentage="50" status="exception" />
   </div>
 
 <script lang="ts" setup>
@@ -119,8 +119,8 @@ onMounted(() => {
 
 ```js
 <div class="demo-progress" >
-    <n-progress isAnimate type="dashboard" :percentage="percentage" :color="colors" />
-    <n-progress isAnimate type="dashboard" :percentage="percentage2" :color="colors" />
+    <n-progress type="dashboard" :percentage="percentage" :color="colors" />
+    <n-progress type="dashboard" :percentage="percentage2" :color="colors" />
     <div>
       <el-button-group>
         <el-button @click="decrease" > - </el-button>
