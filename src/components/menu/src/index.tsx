@@ -1,6 +1,6 @@
 import { defineComponent, PropType, useAttrs } from 'vue'
 import { MenuItem } from './types'
-import * as Icons from '@element-plus/icons'
+import * as Icons from '@element-plus/icons-vue'
 import './styles/index.scss'
 
 export default defineComponent({
@@ -39,12 +39,12 @@ export default defineComponent({
     children: {
       type: String,
       default: 'children'
-    },
+    }
   },
   setup(props, ctx) {
     /**
      * 封装一个渲染无限层级菜单的方法
-     * @param data 
+     * @param data
      * @returns 函数会返回一段jsx代码
      */
     let renderMenu = (data: any[]) => {
@@ -54,10 +54,12 @@ export default defineComponent({
         // vuejsx中处理sub-menu的插槽
         let slots = {
           title: () => {
-            return <>
-              <item.i />
-              <span>{item[props.name]}</span>
-            </>
+            return (
+              <>
+                <item.i />
+                <span>{item[props.name]}</span>
+              </>
+            )
           }
         }
         // 有children的话 递归渲染children

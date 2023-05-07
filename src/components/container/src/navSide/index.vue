@@ -43,11 +43,11 @@ let data = [
   //   name: '表单',
   //   index: '/form'
   // },
-  // {
-  //   icon: 'ShoppingBag',
-  //   name: '表格',
-  //   index: '/table'
-  // }
+  {
+    icon: 'ShoppingBag',
+    name: '表格',
+    index: '/table'
+  }
 ]
 </script>
 

@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { watch, ref } from 'vue'
-import * as ElIcons from '@element-plus/icons'
+import * as ElIcons from '@element-plus/icons-vue'
 import { toLine } from '../../../utils'
 import { useCopy } from '../../../hooks/useCopy'
 let props = defineProps<{

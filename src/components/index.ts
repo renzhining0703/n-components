@@ -4,13 +4,17 @@ import timeButton from "./time-button";
 import chooseIcon from "./chooseIcon";
 import menu from "./menu";
 import progress from "./progress";
+import SearchForm from "./SearchForm";
+import ProTable from "./ProTable";
 
 const components = [
   button,
   timeButton,
   chooseIcon,
   menu,
-  progress
+  progress,
+  ProTable,
+  SearchForm
 ];
 
 const install = (app: App) => {
@@ -25,7 +29,9 @@ export {
   timeButton,
   chooseIcon,
   menu,
-  progress
+  progress,
+  ProTable,
+  SearchForm
 };
 
 export default {

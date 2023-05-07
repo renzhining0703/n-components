@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import * as Icons from '@element-plus/icons'
+import * as Icons from '@element-plus/icons-vue'
 import { toLine } from '../utils'
 
 export default function (vm: App): void {

@@ -42,7 +42,9 @@ import {
   ElRadioGroup,
   ElUpload,
   ElProgress,
-  ElRadioButton
+  ElRadioButton,
+  ElTreeSelect,
+  ElSwitch
 } from 'element-plus';
 
 const components = [
@@ -88,7 +90,9 @@ const components = [
   ElRadioGroup,
   ElUpload,
   ElProgress,
-  ElRadioButton
+  ElRadioButton,
+  ElTreeSelect,
+  ElSwitch
 ];
 
 export default function (vm: App): void {
