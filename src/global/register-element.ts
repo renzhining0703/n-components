@@ -93,6 +93,7 @@ const components = [
   ElRadioButton,
   ElTreeSelect,
   ElSwitch
+  
 ];
 
 export default function (vm: App): void {

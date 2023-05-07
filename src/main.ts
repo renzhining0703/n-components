@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import pinia from "/@/stores";
 
 import { globalRegister } from './global'
 
@@ -39,6 +40,7 @@ Object.keys(Icons).forEach(key => {
 
 app.use(globalRegister)
 app.use(router)
+app.use(pinia)
 app.use(I18n)
 // app.use(chooseIcon)
 app.use(nUI)

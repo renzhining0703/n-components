@@ -18,6 +18,8 @@ specifiers:
   lodash: ^4.17.21
   mockjs: ^1.1.0
   n-element-components: ^1.1.1
+  pinia: ^2.0.35
+  pinia-plugin-persistedstate: ^3.1.0
   sass: ^1.43.2
   sass-loader: ^12.2.0
   three: 0.121.0
@@ -43,6 +45,8 @@ dependencies:
   element-plus: 2.3.4_vue@3.2.33
   lodash: 4.17.21
   n-element-components: 1.1.1
+  pinia: 2.0.35_ytvqwwdyss532bvoq2clv4ed5m
+  pinia-plugin-persistedstate: 3.1.0_pinia@2.0.35
   three: 0.121.0
   vanta: 0.5.24
   vue: 3.2.33
@@ -2062,6 +2066,32 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pinia-plugin-persistedstate/3.1.0_pinia@2.0.35:
+    resolution: {integrity: sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.0.35_ytvqwwdyss532bvoq2clv4ed5m
+    dev: false
+
+  /pinia/2.0.35_ytvqwwdyss532bvoq2clv4ed5m:
+    resolution: {integrity: sha512-P1IKKQWhxGXiiZ3atOaNI75bYlFUbRxtJdhPLX059Z7+b9Z04rnTZdSY8Aph1LA+/4QEMAYHsTQ638Wfe+6K5g==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      typescript: 4.6.4
+      vue: 3.2.33
+      vue-demi: 0.14.0_vue@3.2.33
+    dev: false
+
   /postcss/8.4.13:
     resolution: {integrity: sha512-jtL6eTBrza5MPzy8oJLFuUscHDXTV5KcLlqAWHl5q5WYRfnNRGSmOZmOZ1T6Gy7A99mOZfqungmZMpMmCVJ8ZA==}
     engines: {node: ^10 || ^12 || >=14}
@@ -2334,7 +2364,6 @@ packages:
     resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
