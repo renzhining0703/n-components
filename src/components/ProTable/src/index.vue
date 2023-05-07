@@ -31,10 +31,22 @@
       </div>
       <div class="header-button-ri" v-if="toolButton">
         <slot name="toolButton">
-          <el-button :icon="Refresh" circle @click="getTableList" />
+          <el-tooltip content="刷新" placement="top">
+            <el-button :icon="Refresh" circle @click="getTableList" />
+          </el-tooltip>
+          <el-tooltip content="列设置" placement="top">
+            <el-button :icon="Operation" circle v-if="columns.length" @click="openColSetting" />
+          </el-tooltip>
+          <el-tooltip content="是否展示查询表头" placement="top">
+            <el-button
+              :icon="Search"
+              circle
+              v-if="searchColumns.length"
+              @click="isShowSearch = !isShowSearch"
+            />
+          </el-tooltip>
+          <!-- 打印功能 暂不开放 -->
           <!-- <el-button :icon="Printer" circle v-if="columns.length" @click="handlePrint" /> -->
-          <el-button :icon="Operation" circle v-if="columns.length" @click="openColSetting" />
-          <!-- <el-button :icon="Search" circle v-if="searchColumns.length" @click="isShowSearch = !isShowSearch" /> -->
         </slot>
       </div>
     </div>

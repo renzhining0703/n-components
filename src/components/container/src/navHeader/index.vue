@@ -5,7 +5,7 @@
       <el-icon-fold v-else></el-icon-fold>
     </div>
     <div class="theme-item">
-      <span>主题颜色</span>
+      <!-- <span style="margin-right: 10px">主题颜色</span> -->
       <el-color-picker v-model="primary" :predefine="colorList" @change="changePrimary" />
     </div>
   </div>
@@ -29,19 +29,7 @@ let toggle = () => {
 const { changePrimary } = useTheme()
 
 const globalStore = useGlobalStore()
-const {
-  layout,
-  primary,
-  isGrey,
-  isWeak,
-  asideInverted,
-  isCollapse,
-  breadcrumb,
-  breadcrumbIcon,
-  tabs,
-  tabsIcon,
-  footer
-} = storeToRefs(globalStore)
+const { primary } = storeToRefs(globalStore)
 
 // 预定义主题颜色
 const colorList = [

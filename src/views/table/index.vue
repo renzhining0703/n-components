@@ -8,13 +8,14 @@
       :init-param="initParam"
       :buttons="buttons"
       :data-callback="dataCallback"
+      rowKey="_id"
     >
       <!-- usernameHeader -->
-      <!-- <template #usernameHeader="scope">
+      <template #titleHeader="scope">
         <span @click="ElMessage.success('我是通过作用域插槽渲染的表头')" style="color: #27b57d">
           {{ scope.row.label }}
         </span>
-      </template> -->
+      </template>
     </n-pro-table>
   </div>
 </template>
@@ -29,6 +30,8 @@ import { useDownload } from '/@/hooks/useDownload'
 //   import { useAuthButtons } from "/@/hooks/useAuthButtons";
 import { ElMessage, ElMessageBox } from 'element-plus'
 import NProTable from '/@/components/ProTable/src/index.vue'
+import { getArticleList } from '/@/api/article.js'
+import dayjs from 'dayjs'
 
 const router = useRouter()
 
@@ -39,15 +42,18 @@ const createButtons = () => {
       label: '新增',
       icon: 'CirclePlus',
       handleClick: (scope: any) => {
-        // console.log(selectedListIds, isSelected)
         ElMessage.success('点击了新增哦~')
       }
     },
     {
       label: '修改',
       icon: 'CirclePlus',
-      handleClick: () => {
-        ElMessage.success('点击了修改哦~')
+      handleClick: (scope: any) => {
+        console.log('scope', scope)
+        const { selectedListIds, selectedList } = scope
+        if (!selectedListIds.length) return ElMessage.error('请至少选择一条数据!')
+        if (selectedListIds.length > 1) return ElMessage.error('只能选择一条数据!')
+        ElMessage.success(`选择的文章标题为${selectedList[0].title}`)
       }
     },
     {
@@ -86,26 +92,28 @@ const toDetail = () => {
 const proTable = ref()
 
 // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
-const initParam = reactive({ type: 1 })
+const initParam = reactive({ page: 1, size: 10 })
 
 // dataCallback 是对于返回的表格数据做处理，如果你后台返回的数据不是 list && total && pageNum && pageSize 这些字段，那么你可以在这里进行处理成这些字段
 // 或者直接去 hooks/useTable.ts 文件中把字段改为你后端对应的就行
 const dataCallback = (data: any) => {
+  console.log('dataCallback', data)
   return {
-    list: data.list,
+    list: data.list || data,
     total: data.total,
-    pageNum: data.pageNum,
-    pageSize: data.pageSize
+    pageNum: data.pageNum || data.page,
+    pageSize: data.pageSize || data.size
   }
 }
 
 // 如果你想在请求之前对当前请求参数做一些操作，可以自定义如下函数：params 为当前所有的请求参数（包括分页），最后返回请求列表接口
 // 默认不做操作就直接在 ProTable 组件上绑定	:requestApi="getUserList"
 const getTableList = (params: any) => {
-  // let newParams = JSON.parse(JSON.stringify(params));
-  // newParams.username && (newParams.username = "custom-" + newParams.username);
-  // return getUserList(newParams);
-  return []
+  console.log('params', params)
+  let newParams = JSON.parse(JSON.stringify(params))
+  newParams.username && (newParams.username = 'custom-' + newParams.username)
+  return getArticleList(newParams)
+  // return getArticleList({ page: 1, size: 10 })
 }
 
 // 页面按钮权限（按钮权限既可以使用 hooks，也可以直接使用 v-auth 指令，指令适合直接绑定在按钮上，hooks 适合根据按钮权限显示不同的内容）
@@ -117,6 +125,18 @@ const columns: any = [
   { type: 'selection', fixed: 'left', width: 80 },
   { type: 'index', label: '序号', width: 80 },
   // { type: "expand", label: "Expand", width: 100 },
+  { prop: 'title', label: '标题', minWidth: 200 },
+  { prop: 'author', label: '作者', minWidth: 150 },
+  { prop: 'desc', label: '描述', minWidth: 150 },
+  {
+    prop: 'publicDate',
+    label: '创建时间',
+    minWidth: 150,
+    render: (scope: any) => {
+      const value = scope.row.publicDate
+      return <span>{dayjs(value).format('YYYY-MM-DD HH:mm:ss')}</span>
+    }
+  },
   {
     prop: 'username',
     label: '用户姓名',
@@ -181,10 +201,10 @@ const columns: any = [
         <span
           style={{ color: '#27b57d' }}
           onClick={() => {
-            ElMessage.success('我是通过 tsx 语法渲染的表头')
+            ElMessage.success('我是通过 render 渲染的表头')
           }}
         >
-          {row.label}-render
+          {row.label}
         </span>
       )
     },
@@ -193,7 +213,7 @@ const columns: any = [
       el: 'date-picker',
       span: 2,
       props: { type: 'datetimerange', valueFormat: 'YYYY-MM-DD HH:mm:ss' },
-      defaultValue: ['2022-11-12 11:35:00', '2022-12-12 11:35:00']
+      defaultValue: ['2023-01-01 11:35:00', '2023-12-30 11:35:00']
     }
   }
   // { prop: "operation", label: "操作", fixed: "right", width: 330 }

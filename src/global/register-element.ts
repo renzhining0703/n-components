@@ -44,7 +44,8 @@ import {
   ElProgress,
   ElRadioButton,
   ElTreeSelect,
-  ElSwitch
+  ElSwitch,
+  ElTooltip
 } from 'element-plus';
 
 const components = [
@@ -92,8 +93,8 @@ const components = [
   ElProgress,
   ElRadioButton,
   ElTreeSelect,
-  ElSwitch
-  
+  ElSwitch,
+  ElTooltip
 ];
 
 export default function (vm: App): void {

@@ -24,6 +24,7 @@ import * as Icons from "@element-plus/icons-vue";
 import nUI from '../src/components'
 
 
+
 /** 引入全量打包的文件 使用测试 */
 // import nUI from '../n-ui/index.es.js'
 // import '../n-ui/style.css'
@@ -42,8 +43,8 @@ app.use(globalRegister)
 app.use(router)
 app.use(pinia)
 app.use(I18n)
-// app.use(chooseIcon)
 app.use(nUI)
+// app.use(chooseIcon)
 
 
 app.mount('#app', true)
