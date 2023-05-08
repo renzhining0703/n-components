@@ -16,7 +16,7 @@
 
 <script setup lang="tsx" name="useProTable">
 import NProTable from '/@/components/ProTable/src/index.vue'
-import { getUserList } from '/@/api/user.js'
+import { getUserList } from '/@/api/user'
 import { useTableConfig } from './useTableConfig'
 
 const { columns, buttons, initParam, dataCallback, proTable } = useTableConfig()
