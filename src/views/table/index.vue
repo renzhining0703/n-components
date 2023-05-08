@@ -16,7 +16,7 @@
 
 <script setup lang="tsx" name="useProTable">
 import NProTable from '/@/components/ProTable/src/index.vue'
-import { getArticleList } from '/@/api/article.js'
+import { getUserList } from '/@/api/user.js'
 import { useTableConfig } from './useTableConfig'
 
 const { columns, buttons, initParam, dataCallback, proTable } = useTableConfig()
@@ -31,6 +31,6 @@ const { columns, buttons, initParam, dataCallback, proTable } = useTableConfig()
 const getTableList = (params: any) => {
   console.log('params', params)
   let newParams = JSON.parse(JSON.stringify(params))
-  return getArticleList(newParams)
+  return getUserList(newParams)
 }
 </script>

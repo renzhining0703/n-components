@@ -1,7 +1,5 @@
 import axios from 'axios'
-// import store from '@/store'
 import { ElMessage } from 'element-plus'
-// import { isCheckTimeout } from '/@/utils/auth'
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,

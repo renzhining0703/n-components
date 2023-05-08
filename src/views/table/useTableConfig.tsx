@@ -10,18 +10,18 @@ export function useTableConfig() {
     { type: 'selection', fixed: 'left', width: 80 },
     { type: 'index', label: '序号', width: 80 },
     // { type: "expand", label: "Expand", width: 100 },
-    { prop: 'title', label: '标题', minWidth: 200 },
-    { prop: 'author', label: '作者', minWidth: 150 },
-    { prop: 'desc', label: '描述', minWidth: 150 },
-    {
-      prop: 'publicDate',
-      label: '创建时间',
-      minWidth: 150,
-      render: (scope: any) => {
-        const value = scope.row.publicDate
-        return <span>{dayjs(value).format('YYYY-MM-DD HH:mm:ss')}</span>
-      }
-    },
+    // { prop: 'title', label: '标题', minWidth: 200 },
+    // { prop: 'author', label: '作者', minWidth: 150 },
+    // { prop: 'desc', label: '描述', minWidth: 150 },
+    // {
+    //   prop: 'publicDate',
+    //   label: '创建时间',
+    //   minWidth: 150,
+    //   render: (scope: any) => {
+    //     const value = scope.row.publicDate
+    //     return <span>{dayjs(value).format('YYYY-MM-DD HH:mm:ss')}</span>
+    //   }
+    // },
     {
       prop: 'username',
       label: '用户姓名',
@@ -33,7 +33,7 @@ export function useTableConfig() {
             link
             onClick={() => ElMessage.success('我是通过 tsx 语法渲染的内容')}
           >
-            tsx渲染
+            {scope.row.username}
           </el-button>
         )
       }
@@ -52,11 +52,11 @@ export function useTableConfig() {
       ],
       // 字典请求携带参数
       // enum: () => getUserGender({ id: 1 }),
-      search: { el: 'select', props: { filterable: true }, defaultValue: 0 }
-      // fieldNames: { label: 'codeName', value: 'codeId' }
+      search: { el: 'select', props: { filterable: true }, defaultValue: 0 },
+      fieldNames: { label: 'codeName', value: 'codeId' }
     },
     // 多级 prop
-    { prop: 'user.detail.age', label: '年龄', search: { el: 'input' } },
+    { prop: 'age', label: '年龄', search: { el: 'input' } },
     { prop: 'idCard', label: '身份证号', search: { el: 'input' } },
     { prop: 'email', label: '邮箱' },
     { prop: 'address', label: '居住地址' },
@@ -122,7 +122,7 @@ export function useTableConfig() {
           const { selectedListIds, selectedList } = scope
           if (!selectedListIds.length) return ElMessage.error('请至少选择一条数据!')
           if (selectedListIds.length > 1) return ElMessage.error('只能选择一条数据!')
-          ElMessage.success(`选择的文章标题为${selectedList[0].title}`)
+          ElMessage.warning(`选择的用户姓名为${selectedList[0].username}`)
         }
       },
       {
@@ -155,7 +155,7 @@ export function useTableConfig() {
   const proTable = ref()
 
   // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
-  const initParam = reactive({ page: 1, size: 10 })
+  const initParam = reactive({ type: 1 })
   // dataCallback 是对于返回的表格数据做处理，如果你后台返回的数据不是 list && total && pageNum && pageSize 这些字段，那么你可以在这里进行处理成这些字段
   // 或者直接去 hooks/useTable.ts 文件中把字段改为你后端对应的就行
   const dataCallback = (data: any) => {

@@ -2,6 +2,7 @@ import { defineConfig, loadEnv, ConfigEnv, UserConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import { wrapperEnv } from "./build/getEnv";
+import { createProxy } from "./build/proxy";
 import vuejsx from "@vitejs/plugin-vue-jsx";
 // import { createProxy } from "./build/proxy.ts";
 
@@ -14,6 +15,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
   return {
+    base: viteEnv.VITE_PUBLIC_PATH,
     plugins: [vue(), vuejsx()],
     root,
     // 软链接
@@ -29,14 +31,15 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     server: {
       port: viteEnv.VITE_PORT,
       open: viteEnv.VITE_OPEN,
-      proxy: {
-        '/api': {
-          target: viteEnv.VITE_PROXY, //目标url
-          changeOrigin: true, //支持跨域
-          // rewrite: (path) => path.replace(/^\/api/, ""), 
-            //重写路径,替换/api
-        }
-      }
+      cors: true,
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://mock.mengxuegu.com/mock/6458e9d67ba95d67784d5fc3', //目标url
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ""), 
+      //   }
+      // }
+      proxy: createProxy(viteEnv.VITE_PROXY)
     },
   }
 })
