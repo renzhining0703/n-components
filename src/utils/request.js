@@ -21,7 +21,7 @@ service.interceptors.request.use(
     //   // 如果token存在 注入token
     //   config.headers.Authorization = `Bearer ${store.getters.token}`
     // }
-    config.headers.Authorization = `Bearer 7bdefc58-012a-4c44-b2b4-86a8d7044d77
+    config.headers.Authorization = `Bearer 98e3b577-776b-4679-93eb-474ac487619c
     `
     // 配置 icode
     config.headers.icode = '2E8D7BE3C6335693'

@@ -10,21 +10,11 @@
       :data-callback="dataCallback"
       rowKey="_id"
     >
-      <!-- 通过 props + Header 来渲染表头 titleHeader -->
-      <template #titleHeader="scope">
-        <span @click="ElMessage.success('我是通过作用域插槽渲染的表头')" style="color: #27b57d">
-          {{ scope.row.label }}
-        </span>
-      </template>
     </n-pro-table>
   </div>
 </template>
 
 <script setup lang="tsx" name="useProTable">
-// import { ColumnProps } from '/@/components/ProTable/interface'
-// import { useHandleData } from '/@/hooks/useHandleData'
-// import { useDownload } from '/@/hooks/useDownload'
-import { ElMessage } from 'element-plus'
 import NProTable from '/@/components/ProTable/src/index.vue'
 import { getArticleList } from '/@/api/article.js'
 import { useTableConfig } from './useTableConfig'
