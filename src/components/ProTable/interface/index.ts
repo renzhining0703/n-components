@@ -1,9 +1,9 @@
 import { TableColumnCtx } from "element-plus/es/components/table/src/table-column/defaults";
-import { BreakPoint, Responsive } from "@/components/Grid/interface";
+import { BreakPoint, Responsive } from "/@/components/Grid/interface";
 
 export interface EnumProps {
-  label: string; // 选项框显示的文字
-  value: any; // 选项框值
+  label?: string; // 选项框显示的文字
+  value?: any; // 选项框值
   disabled?: boolean; // 是否禁用此选项
   tagType?: string; // 当 tag 为 true 时，此选择会指定 tag 显示类型
   children?: EnumProps[]; // 为树形选择时，可以通过 children 属性指定子选项
@@ -33,6 +33,7 @@ export type SearchProps = {
   span?: number; // 搜索项所占用的列数，默认为1列
   offset?: number; // 搜索字段左侧偏移列数
   defaultValue?: string | number | boolean | any[]; // 搜索项默认值
+  render?: (form: { row: any }) => any; // 自定义渲染查询表单
 } & Partial<Record<BreakPoint, Responsive>>;
 
 export type FieldNamesProps = {

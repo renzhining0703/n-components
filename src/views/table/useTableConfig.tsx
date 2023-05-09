@@ -14,7 +14,6 @@ export function useTableConfig() {
       label: '用户姓名',
       search: {
         el: 'input',
-        width: 20,
         render: (form: any) => {
           return (
             <el-form-item label="用户姓名 :">
