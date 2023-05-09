@@ -8,7 +8,7 @@
       :init-param="initParam"
       :buttons="buttons"
       :data-callback="dataCallback"
-      rowKey="_id"
+      rowKey="id"
     />
   </div>
 </template>
