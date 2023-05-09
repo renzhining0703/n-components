@@ -140,7 +140,7 @@ export function useTableConfig() {
   const buttons = createButtons()
 
   // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
-  const proTable = ref()
+  const proTableRef = ref()
 
   // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
   const initParam = reactive({ type: 1 })
@@ -165,5 +165,5 @@ export function useTableConfig() {
     return getUserList(newParams)
   }
 
-  return { columns, buttons, initParam, dataCallback, proTable, getTableList }
+  return { columns, buttons, initParam, dataCallback, proTableRef, getTableList }
 }

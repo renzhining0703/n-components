@@ -1,7 +1,7 @@
 <template>
   <div class="table-wrapper">
     <n-pro-table
-      ref="proTable"
+      ref="proTableRef"
       title="用户列表"
       :columns="columns"
       :request-api="getTableList"
@@ -17,5 +17,5 @@
 import NProTable from '/@/components/ProTable/src/index.vue'
 import { useTableConfig } from './useTableConfig'
 
-const { columns, buttons, initParam, dataCallback, proTable, getTableList } = useTableConfig()
+const { columns, buttons, initParam, dataCallback, proTableRef, getTableList } = useTableConfig()
 </script>
