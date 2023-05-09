@@ -1,27 +1,14 @@
-import dayjs from 'dayjs'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { ColumnProps } from '/@/components/ProTable/interface'
 import { ref, reactive } from 'vue'
+import { getUserList } from '/@/api/user'
+import { User } from '/@/api/interface/index'
 
 export function useTableConfig() {
   // 表格配置项
-  // const columns: ColumnProps<User.ResUserList>[] = [
-  const columns: any = [
-    { type: 'selection', fixed: 'left', width: 80 },
+  const columns: ColumnProps<User.ResUserList>[] = [
+    { type: 'selection', fixed: 'left', width: 55 },
     { type: 'index', label: '序号', width: 80 },
-    // { type: "expand", label: "Expand", width: 100 },
-    // { prop: 'title', label: '标题', minWidth: 200 },
-    // { prop: 'author', label: '作者', minWidth: 150 },
-    // { prop: 'desc', label: '描述', minWidth: 150 },
-    // {
-    //   prop: 'publicDate',
-    //   label: '创建时间',
-    //   minWidth: 150,
-    //   render: (scope: any) => {
-    //     const value = scope.row.publicDate
-    //     return <span>{dayjs(value).format('YYYY-MM-DD HH:mm:ss')}</span>
-    //   }
-    // },
     {
       prop: 'username',
       label: '用户姓名',
@@ -41,6 +28,7 @@ export function useTableConfig() {
     {
       prop: 'gender',
       label: '性别',
+      width: 80,
       // 字典数据
       // enum: genderType,
       // 字典请求不带参数
@@ -56,7 +44,7 @@ export function useTableConfig() {
       fieldNames: { label: 'codeName', value: 'codeId' }
     },
     // 多级 prop
-    { prop: 'age', label: '年龄', search: { el: 'input' } },
+    { prop: 'age', label: '年龄', width: 80, search: { el: 'input' } },
     { prop: 'idCard', label: '身份证号', search: { el: 'input' } },
     { prop: 'email', label: '邮箱' },
     { prop: 'address', label: '居住地址' },
@@ -161,12 +149,21 @@ export function useTableConfig() {
   const dataCallback = (data: any) => {
     console.log('dataCallback', data)
     return {
-      list: data.list || data,
+      list: data.list,
       total: data.total,
-      pageNum: data.pageNum || data.page,
-      pageSize: data.pageSize || data.size
+      pageNum: data.pageNum,
+      pageSize: data.pageSize
     }
   }
 
-  return { columns, buttons, initParam, dataCallback, proTable }
+  /**
+   * 获取列表数据方法
+   * @param params 请求参数
+   */
+  const getTableList = (params: any) => {
+    const newParams = JSON.parse(JSON.stringify(params))
+    return getUserList(newParams)
+  }
+
+  return { columns, buttons, initParam, dataCallback, proTable, getTableList }
 }
