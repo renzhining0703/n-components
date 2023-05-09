@@ -3,7 +3,7 @@ import { ColumnProps } from '/@/components/ProTable/interface'
 import { ref, reactive } from 'vue'
 import { getUserList } from '/@/api/user'
 import { User } from '/@/api/interface/index'
-import DateTimePicker from '../../components/DateTimePicker'
+import NDateTimePicker from '../../components/DateTimePicker'
 
 export function useTableConfig() {
   // 表格配置项
@@ -99,7 +99,7 @@ export function useTableConfig() {
         render: (form: any) => {
           return (
             <el-form-item label="创建时间 :">
-              <DateTimePicker vModel={form.createTime} type="datetimerange" />
+              <NDateTimePicker vModel={form.createTime} type="datetimerange" />
             </el-form-item>
           )
         }

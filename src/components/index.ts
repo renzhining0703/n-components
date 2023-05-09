@@ -6,6 +6,7 @@ import menu from "./menu";
 import progress from "./progress";
 import SearchForm from "./SearchForm";
 import ProTable from "./ProTable";
+import NDateTimePicker from './DateTimePicker'
 
 const components = [
   button,
@@ -14,7 +15,8 @@ const components = [
   menu,
   progress,
   ProTable,
-  SearchForm
+  SearchForm,
+  NDateTimePicker
 ];
 
 const install = (app: App) => {
@@ -31,7 +33,8 @@ export {
   menu,
   progress,
   ProTable,
-  SearchForm
+  SearchForm,
+  NDateTimePicker
 };
 
 export default {
