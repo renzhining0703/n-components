@@ -8,9 +8,12 @@
           v-bind="getResponsive(item)"
           :index="index"
         >
-          <el-form-item :label="`${item.label} :`">
+          <!-- 渲染 非render 的formItem -->
+          <el-form-item :label="`${item.label} :`" v-if="!item?.search?.render">
             <SearchFormItem :column="item" :search-param="searchParam" />
           </el-form-item>
+          <!-- 渲染 render 的formItem -->
+          <renderFormItem :render="item?.search?.render(searchParam)" v-else />
         </GridItem>
         <GridItem suffix>
           <div class="operation">
@@ -43,6 +46,7 @@ import { Delete, Search, ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import SearchFormItem from '../components/SearchFormItem.vue'
 import Grid from '/@/components/Grid/index.vue'
 import GridItem from '/@/components/Grid/components/GridItem.vue'
+import renderFormItem from '../components/render-form-item'
 
 interface ProTableProps {
   columns?: ColumnProps[] // 搜索配置列

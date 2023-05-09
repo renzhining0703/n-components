@@ -12,7 +12,17 @@ export function useTableConfig() {
     {
       prop: 'username',
       label: '用户姓名',
-      search: { el: 'input', width: 20 },
+      search: {
+        el: 'input',
+        width: 20,
+        render: (form: any) => {
+          return (
+            <el-form-item label="用户姓名 :">
+              <el-input vModel_trim={form.userName} placeholder="我是render渲染出来的" />
+            </el-form-item>
+          )
+        }
+      },
       render: (scope: any) => {
         return (
           <el-button
