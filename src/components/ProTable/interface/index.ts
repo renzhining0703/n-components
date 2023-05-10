@@ -1,5 +1,6 @@
 import { TableColumnCtx } from "element-plus/es/components/table/src/table-column/defaults";
 import { BreakPoint, Responsive } from "/@/components/Grid/interface";
+import { User } from '/@/api/interface'
 
 export interface EnumProps {
   label?: string; // 选项框显示的文字
@@ -33,7 +34,9 @@ export type SearchProps = {
   span?: number; // 搜索项所占用的列数，默认为1列
   offset?: number; // 搜索字段左侧偏移列数
   defaultValue?: string | number | boolean | any[]; // 搜索项默认值
-  render?: (form: { row: any }) => any; // 自定义渲染查询表单
+  render?: (form: {
+    [x: string]: any; row: User.ResUserList 
+}) => any; // 自定义渲染查询表单
 } & Partial<Record<BreakPoint, Responsive>>;
 
 export type FieldNamesProps = {

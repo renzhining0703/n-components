@@ -6,8 +6,9 @@
     :range-separator="rangeSeparator"
     :start-placeholder="startPlaceholder"
     :end-placeholder="endPlaceholder"
-    :default-time="['00:00:00', '23:59:59']"
+    :default-time="defaultTime"
     :value-format="valueFormat"
+    :disabledDate="disabledDate"
     align="right"
     :size="size"
     :clearable="clearable"
@@ -22,7 +23,7 @@
 import { computed, ref, watch } from 'vue'
 import type { PropType } from 'vue'
 import { isEqual } from 'lodash'
-import { getShortcuts, ShortcutType, disabledDate, validateCustomDateRange } from './service'
+import { getShortcuts, ShortcutType, validateCustomDateRange, isDisabledDates } from './service'
 import { createTipsElement } from './tips-element'
 import { createUuid } from '/@/utils'
 
@@ -35,7 +36,8 @@ enum Format {
 
 const props = defineProps({
   value: {
-    type: [Array, String] as PropType<string[] | string>
+    type: [Array, String] as PropType<string[] | string>,
+    default: ''
   },
   type: {
     type: String,
@@ -72,9 +74,12 @@ const props = defineProps({
     default: false
   },
   // 是否根据快捷面板时间范围，禁止选择时间
-  disabledDate: {
+  isDisabledDate: {
     type: Boolean,
     default: false
+  },
+  disabledDate: {
+    type: Function
   },
   // 时间范围禁止时间, year, month 或者任意数字
   disabledDateDaysRange: {
@@ -98,6 +103,8 @@ const handleChange = (val: string[]) => {
   emits('change', val)
 }
 
+const defaultTime = ref([new Date(0, 0, 0, 0, 0, 0), new Date(0, 0, 0, 23, 59, 59)])
+
 watch(
   () => props.value!,
   (val: string[] | string) => {
@@ -120,11 +127,12 @@ const valueFormat = computed(() => formatMap.get(props.type))
 const dateType = computed(() => props.type)
 
 const shortcuts = getShortcuts(props.shortcutType, props.type)
-console.log('shortcuts', shortcuts)
-const pickerOptions = {
-  shortcuts,
-  disabledDate: (dateTime: Date) => disabledDate(props.disabledDate, shortcuts, dateTime)
-}
+// const pickerOptions = {
+//   shortcuts,
+//   disabledDate: (dateTime: Date) => disabledDate(props.disabledDate, shortcuts, dateTime)
+// }
+
+// const disabledDate: (dateTime: Date) => isDisabledDates(props.isDisabledDate, shortcuts, dateTime)
 
 let added = false
 const popperClass = ref(`hd-date-picker-${createUuid(6)}`)

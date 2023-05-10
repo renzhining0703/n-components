@@ -4,6 +4,26 @@ import { ref, reactive } from 'vue'
 import { getUserList } from '/@/api/user'
 import { User } from '/@/api/interface/index'
 import NDateTimePicker from '../../components/DateTimePicker'
+import dayjs from 'dayjs'
+
+const formatTime =
+  (dateFormat: string) =>
+  (start: any, end = dayjs().endOf('day')) =>
+    [start.format(dateFormat), end.format(dateFormat)]
+
+/** 设置创建时间默认时间  默认近三个月 */
+const createTimeValue = () => {
+  const start = dayjs().startOf('day').subtract(3, 'M')
+  return formatTime('YYYY-MM-DD HH:mm:ss')(start)
+}
+
+/** 设置选择三个月之前到今天的日期 */
+const disabledDate = (time: Date) => {
+  let curDate = new Date().getTime()
+  let three = 90 * 24 * 3600 * 1000
+  let threeMonths = curDate - three
+  return time.getTime() > Date.now() || time.getTime() < threeMonths
+}
 
 export function useTableConfig() {
   // 表格配置项
@@ -15,7 +35,7 @@ export function useTableConfig() {
       label: '用户姓名',
       search: {
         el: 'input',
-        render: (form: any) => {
+        render: (form) => {
           return (
             <el-form-item label="用户姓名 :">
               <el-input vModel_trim={form.username} placeholder="我是render渲染出来的" />
@@ -96,14 +116,18 @@ export function useTableConfig() {
         el: 'date-picker',
         span: 2,
         props: { type: 'datetimerange', valueFormat: 'YYYY-MM-DD HH:mm:ss' },
-        render: (form: any) => {
+        render: (form) => {
           return (
             <el-form-item label="创建时间 :">
-              <NDateTimePicker vModel={form.createTime} type="datetimerange" />
+              <NDateTimePicker
+                vModel={form.createTime}
+                type="datetimerange"
+                disabledDate={disabledDate}
+              />
             </el-form-item>
           )
-        }
-        // defaultValue: ['2023-01-01 11:35:00', '2023-12-30 11:35:00']
+        },
+        defaultValue: createTimeValue()
       }
     }
     // { prop: "operation", label: "操作", fixed: "right", width: 330 }

@@ -154,7 +154,7 @@ export const getShortcuts = (type: typeof ShortcutType[keyof typeof ShortcutType
 }
 
 const endTimeStamp = defaultEnd.valueOf()
-export const disabledDate = (disabled: boolean, shortcuts: ReturnType<typeof getShortcuts>, dateTime: Date) => {
+export const isDisabledDates = (disabled: boolean, shortcuts: ReturnType<typeof getShortcuts>, dateTime: Date) => {
   if (!disabled) {
     return false
   }
