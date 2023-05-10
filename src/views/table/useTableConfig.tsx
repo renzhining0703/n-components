@@ -35,12 +35,8 @@ export function useTableConfig() {
       label: '用户姓名',
       search: {
         el: 'input',
-        render: (form) => {
-          return (
-            <el-form-item label="用户姓名 :">
-              <el-input vModel_trim={form.username} placeholder="我是render渲染出来的" />
-            </el-form-item>
-          )
+        render: ({ searchParam }) => {
+          return <el-input vModel_trim={searchParam.username} placeholder="我是render渲染出来的" />
         }
       },
       render: (scope: any) => {
@@ -113,19 +109,18 @@ export function useTableConfig() {
       },
       width: 180,
       search: {
-        el: 'date-picker',
+        order: 1,
         span: 2,
-        props: { type: 'datetimerange', valueFormat: 'YYYY-MM-DD HH:mm:ss' },
-        render: (form) => {
+        render: ({ searchParam }) => {
           return (
-            <el-form-item label="创建时间 :">
-              <NDateTimePicker
-                vModel={form.createTime}
-                type="datetimerange"
-                disabledDate={disabledDate}
-                clearable
-              />
-            </el-form-item>
+            // <el-form-item label="创建时间 :">
+            <NDateTimePicker
+              vModel={searchParam.createTime}
+              type="datetimerange"
+              disabledDate={disabledDate}
+              clearable
+            />
+            // </el-form-item>
           )
         },
         defaultValue: createTimeValue()
