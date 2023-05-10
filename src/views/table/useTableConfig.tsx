@@ -74,7 +74,7 @@ export function useTableConfig() {
       fieldNames: { label: 'codeName', value: 'codeId' }
     },
     // 多级 prop
-    { prop: 'age', label: '年龄', width: 80, search: { el: 'input' } },
+    { prop: 'user.age', label: '年龄', width: 80, search: { el: 'input' } },
     { prop: 'idCard', label: '身份证号', search: { el: 'input' } },
     { prop: 'email', label: '邮箱' },
     { prop: 'address', label: '居住地址' },
@@ -123,6 +123,7 @@ export function useTableConfig() {
                 vModel={form.createTime}
                 type="datetimerange"
                 disabledDate={disabledDate}
+                clearable
               />
             </el-form-item>
           )
