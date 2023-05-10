@@ -113,14 +113,12 @@ export function useTableConfig() {
         span: 2,
         render: ({ searchParam }) => {
           return (
-            // <el-form-item label="创建时间 :">
             <NDateTimePicker
               vModel={searchParam.createTime}
               type="datetimerange"
               disabledDate={disabledDate}
               clearable
             />
-            // </el-form-item>
           )
         },
         defaultValue: createTimeValue()

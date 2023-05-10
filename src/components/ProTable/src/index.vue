@@ -267,33 +267,32 @@ const renderButtons = (scope: any) => {
   })
 }
 
-// 🙅‍♀️ 不需要打印可以把以下方法删除，打印功能目前存在很多 bug（目前数据处理比较复杂 209-246 行）
-// 处理打印数据（把后台返回的值根据 enum 做转换）
-const printData = computed(() => {
-  const printDataList = JSON.parse(
-    JSON.stringify(selectedList.value.length ? selectedList.value : tableData.value)
-  )
-  // 找出需要转换数据的列（有 enum || 多级 prop && 需要根据 enum 格式化）
-  const needTransformCol = flatColumns.value!.filter(
-    (item) => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum
-  )
-  needTransformCol.forEach((colItem) => {
-    printDataList.forEach((tableItem: { [key: string]: any }) => {
-      tableItem[handleProp(colItem.prop!)] =
-        colItem.prop!.split('.').length > 1 && !colItem.enum
-          ? formatValue(handleRowAccordingToProp(tableItem, colItem.prop!))
-          : filterEnum(
-              handleRowAccordingToProp(tableItem, colItem.prop!),
-              enumMap.value.get(colItem.prop!),
-              colItem.fieldNames
-            )
-      for (const key in tableItem) {
-        if (tableItem[key] === null) tableItem[key] = formatValue(tableItem[key])
-      }
-    })
-  })
-  return printDataList
-})
+// 处理打印数据（把后台返回的值根据 enum 做转换 目前存在bug 暂未解决 todo）
+// const printData = computed(() => {
+//   const printDataList = JSON.parse(
+//     JSON.stringify(selectedList.value.length ? selectedList.value : tableData.value)
+//   )
+//   // 找出需要转换数据的列（有 enum || 多级 prop && 需要根据 enum 格式化）
+//   const needTransformCol = flatColumns.value!.filter(
+//     (item) => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum
+//   )
+//   needTransformCol.forEach((colItem) => {
+//     printDataList.forEach((tableItem: { [key: string]: any }) => {
+//       tableItem[handleProp(colItem.prop!)] =
+//         colItem.prop!.split('.').length > 1 && !colItem.enum
+//           ? formatValue(handleRowAccordingToProp(tableItem, colItem.prop!))
+//           : filterEnum(
+//               handleRowAccordingToProp(tableItem, colItem.prop!),
+//               enumMap.value.get(colItem.prop!),
+//               colItem.fieldNames
+//             )
+//       for (const key in tableItem) {
+//         if (tableItem[key] === null) tableItem[key] = formatValue(tableItem[key])
+//       }
+//     })
+//   })
+//   return printDataList
+// })
 
 // 打印表格数据（💥 多级表头数据打印时，只能扁平化成一维数组，printJs 不支持多级表头打印）
 // const handlePrint = () => {
