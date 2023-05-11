@@ -46,7 +46,8 @@ import {
   ElTreeSelect,
   ElSwitch,
   ElTooltip,
-  ElTag
+  ElTag,
+  ElDivider
 } from 'element-plus';
 
 const components = [
@@ -96,7 +97,8 @@ const components = [
   ElTreeSelect,
   ElSwitch,
   ElTooltip,
-  ElTag
+  ElTag,
+  ElDivider
 ];
 
 export default function (vm: App): void {
