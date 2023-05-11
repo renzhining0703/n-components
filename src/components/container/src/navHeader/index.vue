@@ -7,11 +7,13 @@
     <div class="theme-item">
       <!-- <span style="margin-right: 10px">主题颜色</span> -->
       <el-color-picker v-model="primary" :predefine="colorList" @change="changePrimary" />
+      <SwitchDark />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import SwitchDark from '@/components/SwitchDark/index.vue'
 import { DEFAULT_PRIMARY } from '@/config'
 import { useTheme } from '@/hooks/useTheme'
 import { useGlobalStore } from '@/stores/modules/global'
