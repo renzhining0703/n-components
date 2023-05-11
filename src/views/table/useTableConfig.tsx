@@ -34,7 +34,6 @@ export function useTableConfig() {
       prop: 'username',
       label: '用户姓名',
       search: {
-        el: 'input',
         render: ({ searchParam }) => {
           return <el-input vModel_trim={searchParam.username} placeholder="我是render渲染出来的" />
         }
@@ -66,8 +65,8 @@ export function useTableConfig() {
       ],
       // 字典请求携带参数
       // enum: () => getUserGender({ id: 1 }),
-      search: { el: 'select', props: { filterable: true }, defaultValue: 0 },
-      fieldNames: { label: 'codeName', value: 'codeId' }
+      search: { el: 'select', props: { filterable: true }, defaultValue: 0 }
+      // fieldNames: { label: 'codeName', value: 'codeId' } // 默认为 codeName coedId
     },
     // 多级 prop
     { prop: 'user.age', label: '年龄', width: 80, search: { el: 'input' } },

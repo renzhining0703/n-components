@@ -24,7 +24,7 @@
               @click="collapsed = !collapsed"
               :icon="collapsed ? ArrowDown : ArrowUp"
             >
-              {{ collapsed ? '展开' : '收起' }}
+              {{ collapsed ? '展开' : '合并' }}
               <el-icon class="el-icon--right">
                 <component :is="collapsed ? ArrowDown : ArrowUp"></component>
               </el-icon>

@@ -48,8 +48,8 @@ export const handleProp = (prop: string) => {
  * @returns {String}
  * */
 export function filterEnum(callValue: any, enumData?: any, fieldNames?: FieldNamesProps, type?: "tag") {
-  const value = fieldNames?.value ?? "value";
-  const label = fieldNames?.label ?? "label";
+  const value = fieldNames?.value ?? "codeId";
+  const label = fieldNames?.label ?? "codeName";
   const children = fieldNames?.children ?? "children";
   let filterData: { [key: string]: any } = {};
   // 判断 enumData 是否为数组

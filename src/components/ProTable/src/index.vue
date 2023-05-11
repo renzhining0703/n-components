@@ -133,12 +133,12 @@ import renderBtn from '../components/render-btn'
 
 interface ProTableProps extends Partial<Omit<TableProps<any>, 'data'>> {
   columns: ColumnProps[] // 列配置项
-  buttons: any[]
+  buttons?: any[] // 通过 render 渲染的 按钮集合 非必传(也可通过插槽渲染 看个人喜好)
   requestApi: (params: any) => Promise<any> | any // 请求表格数据的 api ==> 非必传
   requestAuto?: boolean // 是否自动执行请求 api ==> 非必传（默认为true）
   requestError?: (params: any) => void // 表格 api 请求错误监听 ==> 非必传
   dataCallback?: (data: any) => any // 返回数据的回调函数，可以对数据进行处理 ==> 非必传
-  title?: string // 表格标题，目前只在打印的时候用到 ==> 非必传
+  title?: string // 表格标题，目前只在打印的时候用到 ==> 非必传 (目前打印功能bug较多, 暂不开放)
   pagination?: boolean // 是否需要分页组件 ==> 非必传（默认为true）
   initParam?: any // 初始化请求参数 ==> 非必传（默认为{}）
   border?: boolean // 是否带有纵向边框 ==> 非必传（默认为true）
