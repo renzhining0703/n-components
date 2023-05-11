@@ -35,7 +35,13 @@ export function useTableConfig() {
       label: '用户姓名',
       search: {
         render: ({ searchParam }) => {
-          return <el-input vModel_trim={searchParam.username} placeholder="我是render渲染出来的" />
+          return (
+            <el-input
+              vModel_trim={searchParam.username}
+              placeholder="请输入用户姓名"
+              onClick={() => ElMessage.success('我是通过 render 渲染的')}
+            />
+          )
         }
       },
       render: (scope: any) => {
