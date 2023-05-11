@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import { GlobalState } from "/@/stores/interface";
-import { DEFAULT_PRIMARY } from "/@/config";
-import piniaPersistConfig from "/@/config/piniaPersist";
+import { GlobalState } from "@/stores/interface";
+import { DEFAULT_PRIMARY } from "@/config";
+import piniaPersistConfig from "@/config/piniaPersist";
 
 export const useGlobalStore = defineStore({
   id: "geeker-global",

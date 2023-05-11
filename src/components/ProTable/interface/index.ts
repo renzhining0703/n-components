@@ -1,6 +1,6 @@
 import { TableColumnCtx } from "element-plus/es/components/table/src/table-column/defaults";
-import { BreakPoint, Responsive } from "/@/components/Grid/interface";
-import { User } from '/@/api/interface'
+import { BreakPoint, Responsive } from "@/components/Grid/interface";
+import { User } from '@/api/interface'
 
 export interface EnumProps {
   label?: string; // 选项框显示的文字

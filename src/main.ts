@@ -1,20 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import pinia from "/@/stores";
+import pinia from "@/stores";
 
 import { globalRegister } from './global'
 
-import I18n from "/@/languages/index";
+import I18n from "@/languages/index";
 
-import "/@/styles/reset.scss";
-import "/@/styles/common.scss";
-import "/@/assets/iconfont/iconfont.scss";
-import "/@/assets/fonts/font.scss";
+import "@/styles/reset.scss";
+import "@/styles/common.scss";
+import "@/assets/iconfont/iconfont.scss";
+import "@/assets/fonts/font.scss";
 import "element-plus/dist/index.css";
 import "element-plus/theme-chalk/dark/css-vars.css";
-import "/@/styles/theme/element-dark.scss";
-import "/@/styles/element.scss";
+import "@/styles/theme/element-dark.scss";
+import "@/styles/element.scss";
 // svg icons
 // import "virtual:svg-icons-register";
 

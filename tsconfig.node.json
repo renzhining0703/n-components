@@ -4,5 +4,5 @@
     "module": "esnext",
     "moduleResolution": "node"
   },
-  "include": ["vite.config.ts"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "libs/**/*.ts", "libs/**/*.d.ts", "libs/**/*.tsx", "libs/**/*.vue", "build/**/*.ts","build/**/*.d.ts","vite.config.ts"],
 }

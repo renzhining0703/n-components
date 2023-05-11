@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts" setup>
-import { DEFAULT_PRIMARY } from '/@/config'
-import { useTheme } from '/@/hooks/useTheme'
-import { useGlobalStore } from '/@/stores/modules/global'
+import { DEFAULT_PRIMARY } from '@/config'
+import { useTheme } from '@/hooks/useTheme'
+import { useGlobalStore } from '@/stores/modules/global'
 import { storeToRefs } from 'pinia'
 
 let props = defineProps<{

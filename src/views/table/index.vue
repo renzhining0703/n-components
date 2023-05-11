@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="tsx" name="useProTable">
-import NProTable from '/@/components/ProTable/src/index.vue'
+import NProTable from '@/components/ProTable/src/index.vue'
 import { useTableConfig } from './useTableConfig'
 
 const { columns, buttons, initParam, dataCallback, proTableRef, getTableList } = useTableConfig()

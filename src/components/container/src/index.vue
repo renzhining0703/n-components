@@ -3,7 +3,7 @@
     <el-aside width="auto">
       <!-- <div class="header-lf" v-if="!isCollapse">
         <div class="logo flx-center">
-          <img class="logo-img" src="/@/assets/images/logo.svg" alt="logo" />
+          <img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
           <span class="logo-text">n-components</span>
         </div>
       </div> -->

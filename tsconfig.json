@@ -15,12 +15,8 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "/@/*": [
-        "src/*"
-      ],
-      "/nested/*": [
-        "src/views/nested/*"
-      ]
+      "@": ["src"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "libs/**/*.ts", "libs/**/*.d.ts", "libs/**/*.tsx", "libs/**/*.vue", "build/**/*.ts","build/**/*.d.ts","vite.config.ts"],

@@ -25,7 +25,7 @@ import type { PropType } from 'vue'
 import { isEqual } from 'lodash'
 import { getShortcuts, ShortcutType, validateCustomDateRange, isDisabledDates } from './service'
 import { createTipsElement } from './tips-element'
-import { createUuid } from '/@/utils'
+import { createUuid } from '@/utils'
 
 enum Format {
   DateTime = 'YYYY-MM-DD HH:mm:ss',

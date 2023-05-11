@@ -1,5 +1,5 @@
-import http from '/@/utils/request'
-import { ResPage, User } from "/@/api/interface/index";
+import http from '@/utils/request'
+import { ResPage, User } from "@/api/interface/index";
 
 /**
  * 获取列表数据

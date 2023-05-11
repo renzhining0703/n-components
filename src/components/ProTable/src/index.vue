@@ -95,7 +95,7 @@
       <template #empty>
         <div class="table-empty">
           <slot name="empty">
-            <img src="/@/assets/images/notData.png" alt="notData" />
+            <img src="@/assets/images/notData.png" alt="notData" />
             <div>暂无数据</div>
           </slot>
         </div>
@@ -117,14 +117,14 @@
 
 <script setup lang="tsx" name="ProTable">
 import { ref, watch, computed, provide, onMounted } from 'vue'
-import { useTable } from '/@/hooks/useTable'
-import { useSelection } from '/@/hooks/useSelection'
-import { BreakPoint } from '/@/components/Grid/interface'
-import { ColumnProps } from '/@/components/ProTable/interface'
+import { useTable } from '@/hooks/useTable'
+import { useSelection } from '@/hooks/useSelection'
+import { BreakPoint } from '@/components/Grid/interface'
+import { ColumnProps } from '@/components/ProTable/interface'
 import { ElTable, TableProps } from 'element-plus'
 import { Refresh, Printer, Operation, Search } from '@element-plus/icons-vue'
-import { filterEnum, formatValue, handleProp, handleRowAccordingToProp } from '/@/utils'
-import SearchForm from '/@/components/SearchForm/src/index.vue'
+import { filterEnum, formatValue, handleProp, handleRowAccordingToProp } from '@/utils'
+import SearchForm from '@/components/SearchForm/src/index.vue'
 import Pagination from '../components/Pagination.vue'
 import ColSetting from '../components/ColSetting.vue'
 import TableColumn from '../components/TableColumn.vue'

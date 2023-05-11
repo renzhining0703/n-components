@@ -1,8 +1,8 @@
 import { ElMessage } from 'element-plus'
-import { ColumnProps } from '/@/components/ProTable/interface'
+import { ColumnProps } from '@/components/ProTable/interface'
 import { ref, reactive } from 'vue'
-import { getUserList } from '/@/api/user'
-import { User } from '/@/api/interface/index'
+import { getUserList } from '@/api/user'
+import { User } from '@/api/interface/index'
 import NDateTimePicker from '../../components/DateTimePicker'
 import dayjs from 'dayjs'
 

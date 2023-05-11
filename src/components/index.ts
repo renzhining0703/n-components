@@ -42,7 +42,7 @@ export default {
 };
 
 // import { defineAsyncComponent, App } from 'vue'
-// import { camelCaseToHyphen } from '/@/utils/index'
+// import { camelCaseToHyphen } from '@/utils/index'
 
 // export default {
 //   install(app: App): void {
