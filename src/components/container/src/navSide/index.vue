@@ -2,7 +2,7 @@
   <n-menu :collapse="collapse" :data="data" router :defaultActive="$route.path"></n-menu>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 let props = defineProps<{
   collapse: boolean
 }>()
@@ -30,7 +30,7 @@ let data = [
   },
   {
     icon: 'Menu',
-    name: '导航菜单', 
+    name: '导航菜单',
     index: '/menu'
   },
   {
@@ -47,8 +47,13 @@ let data = [
     icon: 'ShoppingBag',
     name: '表格',
     index: '/table'
+  },
+  {
+    icon: 'Calendar',
+    name: '日期组件',
+    index: '/dateTimePicker'
   }
 ]
 </script>
 
-<style lang='scss' scoped></style>
+<style lang="scss" scoped></style>

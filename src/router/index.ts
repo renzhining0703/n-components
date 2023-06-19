@@ -50,6 +50,10 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/table',
         component: () => import('../views/table/index.vue')
+      },
+      {
+        path: '/dateTimePicker',
+        component: () => import('../views/DateTimePicker/index.vue')
       }
       // {
       //   path: '/modalForm',
